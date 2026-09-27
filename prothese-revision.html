@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prothèse Révision — Réviser la prothèse dentaire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#ffffff;
+  --bg:#F4F8FB;
+  --bg-soft:#EEF5FA;
+  --blue-pale:#E4F2FB;
+  --blue-100:#D3E9FA;
+  --blue-dark:#0E2F55;
+  --blue-dark-2:#123B6B;
+  --blue:#1861B0;
+  --blue-strong:#0F4E96;
+  --cyan:#18BEC9;
+  --cyan-dark:#0DA3AD;
+  --gray-50:#F7F9FB;
+  --gray-100:#EEF1F4;
+  --gray-300:#D7DEE5;
+  --gray-500:#7C8B99;
+  --gray-700:#3E4C5A;
+  --text:#15222E;
+  --radius-lg:20px;
+  --radius-md:14px;
+  --radius-sm:10px;
+  --shadow-sm:0 2px 10px rgba(16,45,80,.06);
+  --shadow-md:0 10px 30px rgba(16,45,80,.10);
+  --shadow-lg:0 20px 50px rgba(16,45,80,.14);
+  --maxw:1180px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#F4F8FB; --bg-soft:#EEF5FA; }
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:calc(78px + env(safe-area-inset-top,0px));}
+body{
+  margin:0;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  min-height:100%;
+}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif; margin:0; color:var(--blue-dark); letter-spacing:-0.01em;}
+p{margin:0;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer;}
+img{max-width:100%; display:block;}
+ul{margin:0; padding:0; list-style:none;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+@media(max-width:640px){.wrap{padding:0 18px;}}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font-weight:600; font-size:14.5px; border:none; transition:transform .15s ease, box-shadow .15s ease, background .15s ease; white-space:nowrap;}
+.btn:active{transform:scale(.97);}
+.btn-primary{background:var(--blue-strong); color:#fff; box-shadow:0 8px 20px rgba(15,78,150,.25);}
+.btn-primary:hover{background:var(--blue-dark-2); box-shadow:0 10px 24px rgba(15,78,150,.32);}
+.btn-cyan{background:var(--cyan); color:#fff; box-shadow:0 8px 20px rgba(24,190,201,.28);}
+.btn-cyan:hover{background:var(--cyan-dark);}
+.btn-outline{background:#fff; color:var(--blue-strong); border:1.5px solid var(--blue-100);}
+.btn-outline:hover{border-color:var(--blue-strong); background:var(--blue-pale);}
+.btn-ghost{background:transparent; color:var(--blue-dark);}
+.btn-ghost:hover{background:var(--blue-pale);}
+.btn-sm{padding:8px 16px; font-size:13px;}
+.btn-block{width:100%; justify-content:center;}
+.btn[disabled]{opacity:.45; cursor:not-allowed;}
+.icon{width:1em;height:1em; flex-shrink:0;}
+
+/* ---------- Header ---------- */
+header.site{
+  position:sticky; top:0; z-index:60; background:rgba(255,255,255,.92); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--gray-100);
+}
+.header-inner{display:flex; align-items:center; gap:22px; height:74px;}
+.logo{display:flex; align-items:center; gap:10px; font-family:'Sora'; font-weight:700; font-size:17px; color:var(--blue-dark); flex-shrink:0;}
+.logo .mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--blue-strong),var(--cyan)); display:flex;align-items:center;justify-content:center; color:#fff; flex-shrink:0;}
+.logo small{display:block; font-weight:500; font-size:10.5px; color:var(--cyan-dark); letter-spacing:.03em; margin-top:-2px;}
+nav.main-nav{display:flex; gap:4px; flex:1;}
+nav.main-nav a{padding:9px 13px; border-radius:999px; font-size:14.5px; font-weight:600; color:var(--gray-700); transition:background .15s,color .15s;}
+nav.main-nav a:hover{background:var(--blue-pale); color:var(--blue-strong);}
+nav.main-nav a.active{background:var(--blue-pale); color:var(--blue-strong);}
+.header-actions{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--gray-100); background:#fff; display:flex; align-items:center; justify-content:center; color:var(--blue-dark); transition:background .15s,border-color .15s;}
+.icon-btn:hover{background:var(--blue-pale); border-color:var(--blue-100);}
+.burger{display:none;}
+@media(max-width:980px){
+  nav.main-nav{display:none;}
+  .burger{display:flex;}
+  .header-actions .btn{display:none;}
+}
+/* mobile drawer */
+#mobileDrawer{position:fixed; inset:0; background:rgba(10,25,45,.45); z-index:90; display:none;}
+#mobileDrawer.open{display:block;}
+.drawer-panel{position:absolute; top:0; right:0; width:82%; max-width:340px; height:100%; background:#fff; padding:22px; padding-top:calc(22px + env(safe-area-inset-top,0px)); box-shadow:-10px 0 40px rgba(0,0,0,.15); display:flex; flex-direction:column; gap:6px; overflow-y:auto;}
+.drawer-panel a{padding:13px 14px; border-radius:12px; font-weight:600; color:var(--blue-dark); font-size:15px;}
+.drawer-panel a.active,.drawer-panel a:hover{background:var(--blue-pale);}
+.drawer-close{align-self:flex-end; width:36px;height:36px;border-radius:50%;background:var(--gray-100); display:flex;align-items:center;justify-content:center; border:none; margin-bottom:6px;}
+
+/* search overlay */
+#searchOverlay{position:fixed; inset:0; background:rgba(10,25,45,.5); z-index:95; display:none; padding:8vh 18px;}
+#searchOverlay.open{display:block;}
+.search-box{max-width:640px; margin:0 auto; background:#fff; border-radius:18px; box-shadow:var(--shadow-lg); overflow:hidden;}
+.search-input-row{display:flex; align-items:center; gap:12px; padding:16px 20px; border-bottom:1px solid var(--gray-100);}
+.search-input-row input{flex:1; border:none; outline:none; font-size:17px; font-family:inherit; color:var(--text);}
+.search-results{max-height:56vh; overflow-y:auto; padding:8px;}
+.search-results .sr-item{display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:12px;}
+.search-results .sr-item:hover{background:var(--blue-pale);}
+.sr-tag{font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; background:var(--blue-pale); color:var(--blue-strong); flex-shrink:0;}
+.search-empty{padding:34px 20px; text-align:center; color:var(--gray-500); font-size:14px;}
+
+/* ---------- Generic layout blocks ---------- */
+main{min-height:60vh; padding-bottom:80px;}
+.section{padding:64px 0;}
+@media(max-width:640px){.section{padding:40px 0;}}
+.eyebrow-row{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+.section-title{font-size:clamp(22px,3vw,30px); font-weight:700;}
+.section-sub{color:var(--gray-500); font-size:15px; margin-top:8px; max-width:560px;}
+.section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; margin-bottom:32px; flex-wrap:wrap;}
+
+.card{background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); border:1px solid var(--gray-100); transition:transform .18s ease, box-shadow .18s ease;}
+.card.hoverable:hover{transform:translateY(-4px); box-shadow:var(--shadow-md);}
+
+.pill{display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:999px; font-size:12px; font-weight:700; background:var(--blue-pale); color:var(--blue-strong);}
+.pill.cyan{background:rgba(24,190,201,.12); color:var(--cyan-dark);}
+.pill.gray{background:var(--gray-100); color:var(--gray-700);}
+
+.grid{display:grid; gap:22px;}
+.grid.cols-3{grid-template-columns:repeat(3,1fr);}
+.grid.cols-4{grid-template-columns:repeat(4,1fr);}
+.grid.cols-2{grid-template-columns:repeat(2,1fr);}
+@media(max-width:980px){.grid.cols-3,.grid.cols-4{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.grid.cols-2,.grid.cols-3,.grid.cols-4{grid-template-columns:1fr;}}
+
+.reveal{animation:riseIn .5s ease both;}
+@keyframes riseIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){ .reveal{animation:none;} }
+
+/* thumbnails (css illustration placeholders, no external images) */
+.thumb{position:relative; border-radius:var(--radius-md) var(--radius-md) 0 0; height:150px; display:flex; align-items:center; justify-content:center; overflow:hidden; color:#fff;}
+.thumb svg{width:56px;height:56px; opacity:.92;}
+.thumb::after{content:""; position:absolute; inset:0; background:radial-gradient(circle at 80% 0%, rgba(255,255,255,.22), transparent 60%);}
+.thumb .thumb-dur{position:absolute; bottom:8px; right:10px; background:rgba(10,25,45,.55); color:#fff; font-size:11.5px; font-weight:700; padding:3px 9px; border-radius:999px; z-index:2;}
+.g1{background:linear-gradient(135deg,#1861B0,#18BEC9);}
+.g2{background:linear-gradient(135deg,#123B6B,#3E8FD9);}
+.g3{background:linear-gradient(135deg,#0DA3AD,#1861B0);}
+.g4{background:linear-gradient(135deg,#7C57D9,#1861B0);}
+.g5{background:linear-gradient(135deg,#E0895C,#B0439E);}
+
+/* tooth dot pattern decoration */
+.dot-pattern{position:absolute; inset:0; opacity:.5; background-image:radial-gradient(circle,rgba(255,255,255,.35) 1.4px, transparent 1.4px); background-size:16px 16px;}
+
+/* favorite star button */
+.fav-btn{width:34px;height:34px; border-radius:50%; background:#fff; border:1px solid var(--gray-100); display:flex; align-items:center; justify-content:center; color:var(--gray-300); box-shadow:var(--shadow-sm); transition:color .15s, transform .12s;}
+.fav-btn.active{color:#F5A623;}
+.fav-btn:active{transform:scale(.88);}
+
+/* progress bar */
+.pbar{height:9px; border-radius:999px; background:var(--gray-100); overflow:hidden;}
+.pbar > span{display:block; height:100%; background:linear-gradient(90deg,var(--blue-strong),var(--cyan)); border-radius:999px; transition:width .6s ease;}
+
+/* breadcrumb / back link */
+.back-link{display:inline-flex; align-items:center; gap:6px; color:var(--blue-strong); font-weight:600; font-size:14px; margin-bottom:18px;}
+.back-link:hover{text-decoration:underline;}
+
+/* ---------- HOME ---------- */
+.hero{position:relative; padding:56px 0 72px; overflow:hidden;}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center;}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+.hero h1{font-size:clamp(32px,4.6vw,50px); line-height:1.08; font-weight:800;}
+.hero h1 .accent{color:var(--cyan-dark);}
+.hero p.lead{margin-top:18px; font-size:17px; color:var(--gray-700); max-width:480px; line-height:1.6;}
+.hero-cta{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+.hero-stats{display:flex; gap:26px; margin-top:34px; flex-wrap:wrap;}
+.hero-stat{display:flex; align-items:center; gap:10px;}
+.hero-stat .ic{width:38px;height:38px;border-radius:11px; background:var(--blue-pale); color:var(--blue-strong); display:flex;align-items:center;justify-content:center;}
+.hero-stat span{display:block; font-size:12.5px; color:var(--gray-500); font-weight:600;}
+.hero-visual{position:relative; border-radius:28px; background:linear-gradient(155deg,var(--blue-dark),var(--blue-strong) 55%,var(--cyan-dark)); min-height:360px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:var(--shadow-lg);}
+.hero-visual svg{width:78%; max-width:340px;}
+.hero-visual .blob{position:absolute; width:220px;height:220px;border-radius:50%; background:rgba(255,255,255,.08);}
+.hero-visual .blob.b1{top:-60px; left:-60px;}
+.hero-visual .blob.b2{bottom:-80px; right:-40px; width:260px;height:260px; background:rgba(24,190,201,.18);}
+
+.level-card{padding:26px; display:flex; flex-direction:column; gap:14px; position:relative;}
+.level-card .lv-badge{width:44px;height:44px;border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;}
+.level-card h3{font-size:19px;}
+.level-card p{color:var(--gray-500); font-size:14px; line-height:1.55;}
+.level-card .lv-illus{position:absolute; right:18px; top:18px; width:52px;height:52px; opacity:.9;}
+
+.feature-box{padding:24px 20px; text-align:left; display:flex; flex-direction:column; gap:12px;}
+.feature-box .fic{width:46px;height:46px; border-radius:13px; background:var(--blue-pale); color:var(--blue-strong); display:flex; align-items:center; justify-content:center;}
+.feature-box h4{font-size:15.5px;}
+.feature-box p{font-size:13.5px; color:var(--gray-500); line-height:1.5;}
+
+.course-card{overflow:hidden; display:flex; flex-direction:column;}
+.course-card .cc-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+.course-card h4{font-size:16px;}
+.course-card .cc-meta{display:flex; gap:8px; flex-wrap:wrap;}
+.course-card p.desc{font-size:13.5px; color:var(--gray-500); line-height:1.5;}
+.course-card .cc-foot{display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:6px;}
+
+.cta-banner{background:linear-gradient(120deg,var(--blue-dark),var(--blue-strong) 60%, var(--cyan-dark)); border-radius:28px; padding:52px 48px; display:flex; align-items:center; justify-content:space-between; gap:30px; color:#fff; position:relative; overflow:hidden;}
+.cta-banner h2{color:#fff; font-size:clamp(24px,3vw,32px);}
+.cta-banner p{color:rgba(255,255,255,.82); margin-top:10px; max-width:420px;}
+.cta-banner .cb-visual{width:150px;height:150px; flex-shrink:0;}
+@media(max-width:760px){.cta-banner{flex-direction:column; text-align:center; padding:38px 24px;} .cta-banner .cb-visual{display:none;}}
+
+/* dashboard preview on home */
+.mini-dash{display:grid; grid-template-columns:1fr 1.3fr; gap:20px;}
+@media(max-width:760px){.mini-dash{grid-template-columns:1fr;}}
+.donut-wrap{display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px; padding:28px;}
+.activity-row{display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--gray-100);}
+.activity-row:last-child{border-bottom:none;}
+.activity-ic{width:36px;height:36px;border-radius:10px; background:var(--blue-pale); color:var(--blue-strong); display:flex;align-items:center;justify-content:center; flex-shrink:0;}
+.activity-row .at{font-size:13.5px; font-weight:600;}
+.activity-row .as{font-size:12px; color:var(--gray-500);}
+
+/* ---------- Filters ---------- */
+.filter-bar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px;}
+.chip{padding:9px 16px; border-radius:999px; border:1.5px solid var(--gray-100); background:#fff; font-size:13.5px; font-weight:600; color:var(--gray-700); transition:.15s;}
+.chip:hover{border-color:var(--blue-100);}
+.chip.active{background:var(--blue-strong); border-color:var(--blue-strong); color:#fff;}
+.filter-group-label{font-size:11.5px; font-weight:700; color:var(--gray-500); text-transform:uppercase; letter-spacing:.04em; margin:18px 0 8px;}
+.filter-panel{background:#fff; border-radius:18px; padding:20px 22px; box-shadow:var(--shadow-sm); border:1px solid var(--gray-100); margin-bottom:28px;}
+.search-mini{display:flex; align-items:center; gap:10px; background:var(--gray-50); border-radius:12px; padding:11px 16px; border:1px solid var(--gray-100);}
+.search-mini input{border:none; background:transparent; outline:none; flex:1; font-family:inherit; font-size:14.5px;}
+
+.empty-state{text-align:center; padding:60px 20px; color:var(--gray-500);}
+.empty-state .es-ic{width:60px;height:60px; margin:0 auto 16px; color:var(--gray-300);}
+
+/* ---------- Course reading page ---------- */
+.lesson-head{background:linear-gradient(120deg,var(--blue-dark),var(--blue-strong)); border-radius:24px; padding:34px 36px; color:#fff; margin-bottom:30px;}
+.lesson-head h1{color:#fff; font-size:clamp(22px,3vw,30px);}
+.lesson-meta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;}
+.lesson-meta .lm{background:rgba(255,255,255,.14); padding:6px 13px; border-radius:999px; font-size:12.5px; font-weight:600; display:flex; align-items:center; gap:6px;}
+.lesson-body{background:#fff; border-radius:22px; padding:36px; box-shadow:var(--shadow-sm); border:1px solid var(--gray-100);}
+.lesson-body h3{margin-top:28px; margin-bottom:12px; font-size:19px;}
+.lesson-body h3:first-child{margin-top:0;}
+.lesson-body p{color:var(--gray-700); line-height:1.75; font-size:15px; margin-bottom:14px;}
+.callout{border-radius:16px; padding:18px 20px; margin:18px 0; display:flex; gap:14px; align-items:flex-start;}
+.callout.retenir{background:rgba(24,190,201,.08); border:1px solid rgba(24,190,201,.25);}
+.callout.vocab{background:var(--blue-pale); border:1px solid var(--blue-100);}
+.callout .co-ic{width:32px;height:32px;border-radius:9px; background:#fff; display:flex;align-items:center;justify-content:center; flex-shrink:0; color:var(--cyan-dark); box-shadow:var(--shadow-sm);}
+.callout strong{display:block; margin-bottom:4px; font-size:13.5px; color:var(--blue-dark);}
+.callout p{margin:0; font-size:14px; color:var(--gray-700);}
+.vocab-list{display:flex; flex-direction:column; gap:8px;}
+.vocab-list li{font-size:14px;}
+.vocab-list b{color:var(--blue-strong);}
+.diagram-box{border:1.5px dashed var(--gray-300); border-radius:16px; padding:26px; text-align:center; color:var(--gray-500); font-size:13.5px; margin:18px 0; background:var(--gray-50);}
+.diagram-box svg{width:100%; max-width:340px; margin:0 auto 10px;}
+.lesson-table{width:100%; border-collapse:collapse; margin:16px 0; font-size:13.5px;}
+.lesson-table th,.lesson-table td{border:1px solid var(--gray-100); padding:10px 12px; text-align:left;}
+.lesson-table th{background:var(--gray-50); color:var(--blue-dark); font-weight:700;}
+.lesson-foot{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:26px; padding-top:26px; border-top:1px solid var(--gray-100); flex-wrap:wrap;}
+.done-check{display:flex; align-items:center; gap:8px; font-weight:600; font-size:14px; color:var(--gray-700);}
+
+/* ---------- Video ---------- */
+.video-player{border-radius:20px; background:linear-gradient(140deg,var(--blue-dark),var(--blue-strong)); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; color:#fff; position:relative; box-shadow:var(--shadow-md); overflow:hidden;}
+.video-player .play-btn{width:74px;height:74px;border-radius:50%; background:rgba(255,255,255,.18); border:2px solid rgba(255,255,255,.5); display:flex; align-items:center; justify-content:center; transition:transform .15s, background .15s;}
+.video-player .play-btn:hover{background:rgba(255,255,255,.28); transform:scale(1.06);}
+
+/* ---------- Documents ---------- */
+.doc-card{display:flex; gap:16px; align-items:center; padding:18px 20px;}
+.doc-ic{width:52px;height:52px;border-radius:13px; flex-shrink:0; display:flex; align-items:center; justify-content:center; color:#fff;}
+.doc-info{flex:1; min-width:0;}
+.doc-info h4{font-size:15px; margin-bottom:4px;}
+.doc-meta{display:flex; gap:6px; flex-wrap:wrap; font-size:12px; color:var(--gray-500);}
+.doc-actions{display:flex; gap:8px; flex-shrink:0;}
+@media(max-width:560px){.doc-card{flex-wrap:wrap;} .doc-actions{width:100%; justify-content:flex-end;}}
+
+/* ---------- Exercises ---------- */
+.ex-type-card{padding:22px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;}
+.ex-type-card .et-ic{width:48px;height:48px;border-radius:13px; background:var(--blue-pale); color:var(--blue-strong); display:flex; align-items:center; justify-content:center;}
+.ex-runner{max-width:680px; margin:0 auto;}
+.ex-progress-row{display:flex; align-items:center; gap:14px; margin-bottom:22px;}
+.ex-progress-row .pbar{flex:1;}
+.opt-list{display:flex; flex-direction:column; gap:10px; margin-top:20px;}
+.opt-item{display:flex; align-items:center; gap:12px; padding:14px 16px; border-radius:14px; border:1.5px solid var(--gray-100); background:#fff; font-size:14.5px; font-weight:600; color:var(--gray-700); text-align:left; transition:.15s;}
+.opt-item:hover{border-color:var(--blue-100); background:var(--blue-pale);}
+.opt-item.selected{border-color:var(--blue-strong); background:var(--blue-pale); color:var(--blue-strong);}
+.opt-item.correct{border-color:var(--cyan-dark); background:rgba(24,190,201,.12); color:var(--cyan-dark);}
+.opt-item.wrong{border-color:#E15361; background:rgba(225,83,97,.09); color:#C43B48;}
+.opt-radio{width:20px;height:20px;border-radius:50%; border:2px solid var(--gray-300); flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+.opt-item.selected .opt-radio{border-color:var(--blue-strong);}
+.blank-input{border:1.5px solid var(--gray-300); border-radius:8px; padding:5px 10px; font-family:inherit; font-size:14.5px; width:120px; text-align:center;}
+.blank-input:focus{outline:none; border-color:var(--blue-strong);}
+.feedback-box{margin-top:20px; padding:18px 20px; border-radius:16px; display:flex; gap:14px; align-items:flex-start;}
+.feedback-box.ok{background:rgba(24,190,201,.1); border:1px solid rgba(24,190,201,.3);}
+.feedback-box.ko{background:rgba(225,83,97,.08); border:1px solid rgba(225,83,97,.25);}
+.feedback-box .fb-ic{width:32px;height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0;}
+.feedback-box.ok .fb-ic{background:var(--cyan-dark);}
+.feedback-box.ko .fb-ic{background:#E15361;}
+.assoc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px;}
+@media(max-width:560px){.assoc-grid{grid-template-columns:1fr;}}
+.assoc-item{padding:14px 16px; border-radius:12px; border:1.5px solid var(--gray-100); background:#fff; font-size:14px; font-weight:600; cursor:pointer; transition:.15s;}
+.assoc-item.sel{border-color:var(--blue-strong); background:var(--blue-pale);}
+.assoc-item.matched{border-color:var(--cyan-dark); background:rgba(24,190,201,.12); cursor:default;}
+.ex-nav{display:flex; justify-content:space-between; margin-top:26px;}
+.result-summary{text-align:center; padding:40px 20px;}
+.score-ring{width:150px;height:150px; margin:0 auto 20px;}
+
+/* ---------- Quiz list ---------- */
+.quiz-card{padding:22px 24px; display:flex; flex-direction:column; gap:14px;}
+.quiz-card .qc-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+.quiz-card h4{font-size:16.5px;}
+.quiz-card .qc-meta{display:flex; gap:16px; color:var(--gray-500); font-size:13px; flex-wrap:wrap;}
+.quiz-card .qc-meta span{display:flex; align-items:center; gap:6px;}
+
+/* ---------- Progression ---------- */
+.stat-card{padding:22px; display:flex; align-items:center; gap:16px;}
+.stat-card .sic{width:50px;height:50px;border-radius:14px; display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0;}
+.stat-card .sval{font-size:23px; font-weight:800; color:var(--blue-dark); font-family:'Sora';}
+.stat-card .slabel{font-size:12.5px; color:var(--gray-500); font-weight:600;}
+.class-progress-row{display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--gray-100);}
+.class-progress-row:last-child{border-bottom:none;}
+.class-progress-row .cpr-label{width:150px; flex-shrink:0; font-size:14px; font-weight:700; color:var(--blue-dark);}
+.class-progress-row .cpr-pct{width:46px; text-align:right; font-size:13.5px; font-weight:700; color:var(--gray-700); flex-shrink:0;}
+.badge-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:14px;}
+.badge-item{padding:18px 10px; text-align:center; border-radius:16px; background:var(--gray-50); border:1px solid var(--gray-100); display:flex; flex-direction:column; align-items:center; gap:8px;}
+.badge-item.earned{background:linear-gradient(160deg,#FFF7E8,#FFEFD1); border-color:#F5D68A;}
+.badge-item .bic{width:42px;height:42px; border-radius:50%; background:var(--gray-100); display:flex;align-items:center;justify-content:center; color:var(--gray-300); font-size:20px;}
+.badge-item.earned .bic{background:#F5A623; color:#fff;}
+.badge-item span{font-size:11.5px; font-weight:700; color:var(--gray-500); line-height:1.3;}
+.badge-item.earned span{color:#946200;}
+.level-track{display:flex; align-items:center; gap:0; margin-top:10px;}
+.lt-step{flex:1; text-align:center; position:relative;}
+.lt-step .ltdot{width:26px;height:26px;border-radius:50%; background:var(--gray-100); border:3px solid var(--gray-100); margin:0 auto 8px; display:flex; align-items:center; justify-content:center;}
+.lt-step.done .ltdot{background:var(--cyan-dark); border-color:var(--cyan-dark);}
+.lt-step.current .ltdot{background:var(--blue-strong); border-color:rgba(24,97,176,.25); box-shadow:0 0 0 5px rgba(24,97,176,.15);}
+.lt-step span{font-size:11.5px; font-weight:700; color:var(--gray-500);}
+.lt-step.done span,.lt-step.current span{color:var(--blue-dark);}
+.lt-line{position:absolute; top:13px; left:-50%; width:100%; height:3px; background:var(--gray-100); z-index:-1;}
+.lt-step.done .lt-line{background:var(--cyan-dark);}
+.lt-step:first-child .lt-line{display:none;}
+.recommend-item{display:flex; align-items:center; gap:12px; padding:13px 16px; border-radius:14px; background:#FFF8ED; border:1px solid #F5E1B8; margin-bottom:10px;}
+.recommend-item .ric{color:#C98A1D; flex-shrink:0;}
+
+/* ---------- Profile ---------- */
+.profile-hero{display:flex; align-items:center; gap:20px; padding:28px; flex-wrap:wrap;}
+.avatar{width:74px;height:74px;border-radius:50%; background:linear-gradient(135deg,var(--blue-strong),var(--cyan)); display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Sora'; font-weight:700; font-size:26px; flex-shrink:0;}
+.form-row{display:flex; flex-direction:column; gap:6px; margin-bottom:16px;}
+.form-row label{font-size:12.5px; font-weight:700; color:var(--gray-500); text-transform:uppercase; letter-spacing:.03em;}
+.form-row input,.form-row select,.form-row textarea{border:1.5px solid var(--gray-100); border-radius:11px; padding:11px 14px; font-family:inherit; font-size:14.5px; background:var(--gray-50); color:var(--text);}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none; border-color:var(--blue-strong); background:#fff;}
+
+/* ---------- Auth modal ---------- */
+.modal-bg{position:fixed; inset:0; background:rgba(10,25,45,.5); z-index:110; display:none; align-items:center; justify-content:center; padding:20px;}
+.modal-bg.open{display:flex;}
+.modal-box{background:#fff; border-radius:22px; max-width:400px; width:100%; padding:32px; box-shadow:var(--shadow-lg); position:relative; max-height:88vh; overflow-y:auto;}
+.modal-close{position:absolute; top:18px; right:18px; width:32px;height:32px;border-radius:50%; background:var(--gray-100); border:none; display:flex; align-items:center; justify-content:center;}
+.auth-tabs{display:flex; gap:4px; background:var(--gray-100); padding:4px; border-radius:12px; margin-bottom:22px;}
+.auth-tabs button{flex:1; padding:9px; border:none; background:transparent; border-radius:9px; font-weight:700; font-size:13.5px; color:var(--gray-500);}
+.auth-tabs button.active{background:#fff; color:var(--blue-strong); box-shadow:var(--shadow-sm);}
+
+/* ---------- Admin ---------- */
+.admin-tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px;}
+.admin-panel{display:none;}
+.admin-panel.active{display:block;}
+.admin-table{width:100%; border-collapse:collapse; background:#fff; border-radius:16px; overflow:hidden; box-shadow:var(--shadow-sm);}
+.admin-table th,.admin-table td{padding:12px 16px; text-align:left; font-size:13.5px; border-bottom:1px solid var(--gray-100);}
+.admin-table th{background:var(--gray-50); color:var(--blue-dark); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.03em;}
+.admin-table tr:last-child td{border-bottom:none;}
+.row-actions{display:flex; gap:6px;}
+.icon-mini{width:30px;height:30px; border-radius:8px; border:1px solid var(--gray-100); background:#fff; display:flex; align-items:center; justify-content:center; color:var(--gray-500);}
+.icon-mini:hover{background:var(--gray-50);}
+.icon-mini.danger:hover{color:#E15361; border-color:#f3c3c7;}
+.admin-form-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media(max-width:640px){.admin-form-grid{grid-template-columns:1fr;}}
+.toast{position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--blue-dark); color:#fff; padding:13px 24px; border-radius:999px; font-size:14px; font-weight:600; box-shadow:var(--shadow-lg); z-index:200; opacity:0; transition:.25s; display:flex; align-items:center; gap:8px;}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+/* ---------- Footer ---------- */
+footer.site{background:var(--blue-dark); color:rgba(255,255,255,.75); padding:50px 0 calc(90px + env(safe-area-inset-bottom,0px));}
+@media(min-width:981px){footer.site{padding-bottom:44px;}}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:30px;}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}}
+footer.site h5{color:#fff; font-size:13px; margin-bottom:14px; font-weight:700;}
+footer.site a{display:block; padding:5px 0; font-size:13.5px; color:rgba(255,255,255,.65);}
+footer.site a:hover{color:#fff;}
+.footer-bottom{margin-top:34px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12); font-size:12.5px; color:rgba(255,255,255,.5); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+/* ---------- Bottom mobile nav ---------- */
+.mobile-nav{display:none;}
+@media(max-width:980px){
+  .mobile-nav{
+    display:flex; position:fixed; bottom:0; left:0; right:0; z-index:70; background:#fff; border-top:1px solid var(--gray-100);
+    padding:8px 6px calc(8px + env(safe-area-inset-bottom,0px)); justify-content:space-around; box-shadow:0 -6px 18px rgba(16,45,80,.06);
+  }
+  .mobile-nav a{display:flex; flex-direction:column; align-items:center; gap:3px; color:var(--gray-500); font-size:10.5px; font-weight:700; padding:6px 8px; border-radius:12px; min-width:56px;}
+  .mobile-nav a.active{color:var(--blue-strong); background:var(--blue-pale);}
+  .mobile-nav a svg{width:21px;height:21px;}
+  main{padding-bottom:120px;}
+}
+
+.view{display:none;}
+.view.active{display:block;}
+.skeleton{background:linear-gradient(90deg,var(--gray-100) 25%,#f5f7fa 37%,var(--gray-100) 63%); background-size:400% 100%; animation:sk 1.4s ease infinite; border-radius:10px;}
+@keyframes sk{0%{background-position:100% 50%;}100%{background-position:0 50%;}}
+
+.two-col{display:grid; grid-template-columns:2.1fr 1fr; gap:28px; align-items:start;}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;}}
+.side-card{padding:22px;}
+.side-card h4{font-size:14px; margin-bottom:14px;}
+.tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<div id="toast" class="toast"></div>
+
+<!-- ============================================================
+     FIREBASE — authentification Google + base de données Firestore
+     ============================================================ -->
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyD7GaXWyIVC4a2NZ8r7dIY-8isHxhORIow",
+  authDomain: "prothese-revision.firebaseapp.com",
+  projectId: "prothese-revision",
+  storageBucket: "prothese-revision.firebasestorage.app",
+  messagingSenderId: "584907793824",
+  appId: "1:584907793824:web:39a455f3b897efd72830c5",
+  measurementId: "G-ME4EZWCR01"
+};
+let fbApp=null, fbAuth=null, fbDB=null, FIREBASE_OK=false;
+try{
+  fbApp = firebase.initializeApp(firebaseConfig);
+  fbAuth = firebase.auth();
+  fbDB = firebase.firestore();
+  FIREBASE_OK = true;
+}catch(e){
+  console.error('Firebase n\'a pas pu s\'initialiser', e);
+}
+</script>
+
+<script>
+/* ============================================================
+   ICONS — small inline SVG library
+   ============================================================ */
+const I = {
+  tooth:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.2 0-3.3 1.2-4.5 1.2C6 4.2 4.5 3.4 3.3 4.6 2 6 2.3 8.6 3 11c.6 2.2 1.3 4.4 2.2 6.4.5 1.2 1 2.6 2.3 2.6 1.5 0 1.6-2.2 2-3.7.3-1.1.7-2 1.5-2s1.2.9 1.5 2c.4 1.5.5 3.7 2 3.7 1.3 0 1.8-1.4 2.3-2.6.9-2 1.6-4.2 2.2-6.4.7-2.4 1-5-.3-6.4-1.2-1.2-2.7-.4-4.2-.4C15.3 4.2 14.2 3 12 3Z"/></svg>`,
+  book:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H12v16h6.5c.8 0 1.5-.7 1.5-1.5v-13Z"/></svg>`,
+  video:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="13" height="13" rx="2.5"/><path d="M21 8.5v7l-5-2.5v-2z"/></svg>`,
+  doc:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1Z"/><path d="M14 3.5v4h4"/><path d="M8.5 13h7M8.5 16.5h5"/></svg>`,
+  pencil:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 4.5 5 5L8 21H3v-5Z"/></svg>`,
+  quiz:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.7-2 1.9-2.3 3.4M12 16.2v.1"/></svg>`,
+  chart:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>`,
+  home:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 10 8.5-7 8.5 7"/><path d="M5.5 9v9.5a1 1 0 0 0 1 1H17.5a1 1 0 0 0 1-1V9"/></svg>`,
+  user:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.3-3.6 4.2-5.5 7.5-5.5s6.2 1.9 7.5 5.5"/></svg>`,
+  search:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.3-4.3"/></svg>`,
+  star:`<svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6.2 6.7.8-5 4.6 1.3 6.6L12 17.6 6.1 20.7l1.3-6.6-5-4.6 6.7-.8Z"/></svg>`,
+  starOutline:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.5l2.9 6.2 6.7.8-5 4.6 1.3 6.6L12 17.6 6.1 20.7l1.3-6.6-5-4.6 6.7-.8Z"/></svg>`,
+  arrowR:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`,
+  arrowL:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>`,
+  check:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6"/></svg>`,
+  x:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg>`,
+  menu:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`,
+  trophy:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M8 5H5.5a1 1 0 0 0-1 1.2c.3 1.7 1.3 3.3 3.5 3.7M16 5h2.5a1 1 0 0 1 1 1.2c-.3 1.7-1.3 3.3-3.5 3.7"/><path d="M12 12v3M9 20h6M10 17h4v3h-4z"/></svg>`,
+  flame:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s-5 4.5-5 9.5a5 5 0 0 0 10 0c0-1.5-.7-2.5-1.3-3.3.2 1.5-.5 2.3-1 2.3-1 0-.7-1.5-.7-2.5C14 6.5 12 3 12 3Z"/></svg>`,
+  micro:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h4v4a2 2 0 1 1-4 0V3Z"/><path d="M9 9v2a2 2 0 0 0 2 2M17 21H7M12 13v4M9 21c0-2 1.3-3 3-3s3 1 3 3"/></svg>`,
+  flask:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L4.8 18a1.8 1.8 0 0 0 1.5 2.8h11.4a1.8 1.8 0 0 0 1.5-2.8L14 9.5V3"/><path d="M7.5 15h9"/></svg>`,
+  tool:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 1-5.4 5.4L4 17l3 3 5.1-5.1a4 4 0 0 1 5.4-5.4L14.5 12.5Z"/></svg>`,
+  play:`<svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5.5v13l11-6.5Z"/></svg>`,
+  download:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 18v1.5A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V18"/></svg>`,
+  eye:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.7"/></svg>`,
+  clock:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>`,
+  plus:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`,
+  trash:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-8 0 .7 12a1.5 1.5 0 0 0 1.5 1.4h5.6a1.5 1.5 0 0 0 1.5-1.4L18 7"/></svg>`,
+  edit:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 4.5 5 5L8 21H3v-5Z"/></svg>`,
+  shield:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 5 3.4 7.6 7.5 9.5 4.1-1.9 7.5-4.5 7.5-9.5V6Z"/></svg>`,
+  link:`<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6M10 6.5l1-1a3.5 3.5 0 0 1 5 5l-1 1M14 17.5l-1 1a3.5 3.5 0 0 1-5-5l1-1"/></svg>`,
+  google:`<svg class="icon" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.6 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.4-.1-2.5-.4-3.5Z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.6 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.6 5.1 29.6 3 24 3c-7.6 0-14.1 4.3-17.7 10.7Z"/><path fill="#4CAF50" d="M24 45c5.5 0 10.4-1.9 14.2-5.1l-6.6-5.4C29.6 36.3 26.9 37 24 37c-5.2 0-9.6-3.3-11.3-8l-6.6 5.1C9.8 40.6 16.3 45 24 45Z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.3-4 5.7l6.6 5.4C41.8 36 45 30.6 45 24c0-1.4-.1-2.5-.4-3.5Z"/></svg>`
+};
+
+/* ============================================================
+   DATA
+   ============================================================ */
+const CLASSES = ['Seconde','Première','Terminale'];
+const MATIERES = ['Anatomie dentaire','Matériaux','CFAO / CAO','Conception','Fabrication','Prothèse fixe','Prothèse amovible','Occlusion','Hygiène et sécurité','Technologie','Sciences','Prévention / santé / environnement'];
+const GRADIENTS = ['g1','g2','g3','g4','g5'];
+function gradFor(seed){ let h=0; for(const c of String(seed)) h=(h*31+c.charCodeAt(0))>>>0; return GRADIENTS[h%GRADIENTS.length]; }
+function iconFor(matiere){
+  const m = {
+    'Anatomie dentaire':I.tooth,'Matériaux':I.flask,'CFAO / CAO':I.tool,'Conception':I.tool,
+    'Fabrication':I.tool,'Prothèse fixe':I.tooth,'Prothèse amovible':I.tooth,'Occlusion':I.tooth,
+    'Hygiène et sécurité':I.shield,'Technologie':I.micro,'Sciences':I.flask,'Prévention / santé / environnement':I.shield
+  };
+  return m[matiere] || I.book;
+}
+
+const COURSES = [
+  {id:'c1', classe:'Seconde', matiere:'Anatomie dentaire', chapitre:'Les différentes dents', title:'Les différentes dents et leurs fonctions', difficulty:'Facile', duree:18,
+   desc:"Découvrez les incisives, canines, prémolaires et molaires, et le rôle de chacune dans la mastication.",
+   body:[
+     {h:'Les quatre familles de dents'},
+     {p:'La denture humaine adulte comprend 32 dents réparties en quatre familles, chacune adaptée à une fonction précise de la mastication. Comprendre cette organisation est la base de toute étude de prothèse dentaire.'},
+     {p:'Les incisives, situées à l\'avant, servent à couper les aliments. Les canines, pointues, permettent de déchirer. Les prémolaires et les molaires, plus larges, broient et écrasent les aliments avant la déglutition.'},
+     {retenir:'Une denture complète adulte compte 8 incisives, 4 canines, 8 prémolaires et 12 molaires (dont 4 dents de sagesse).'},
+     {diagram:'Schéma de l\'arcade dentaire avec numérotation'},
+     {h:'Structure interne d\'une dent'},
+     {p:'Chaque dent est composée de plusieurs tissus : l\'émail, la couche la plus dure et la plus externe ; la dentine, sous l\'émail, plus sensible ; la pulpe, au centre, qui contient les nerfs et les vaisseaux sanguins ; et le cément, qui recouvre la racine.'},
+     {vocab:[['Émail','Tissu le plus dur du corps humain, recouvre la couronne'],['Dentine','Tissu situé sous l\'émail, moins minéralisé'],['Pulpe','Tissu mou central contenant nerfs et vaisseaux'],['Cément','Tissu minéralisé recouvrant la racine']]},
+     {h:'Pourquoi c\'est important en prothèse'},
+     {p:'Le prothésiste dentaire doit connaître précisément la forme, les proportions et la fonction de chaque dent afin de reproduire fidèlement une dent manquante ou endommagée, en respectant l\'anatomie et l\'occlusion du patient.'}
+   ]},
+  {id:'c2', classe:'Seconde', matiere:'Hygiène et sécurité', chapitre:'Sécurité au laboratoire', title:'Les règles d\'hygiène et de sécurité au laboratoire', difficulty:'Facile', duree:15,
+   desc:'Les bonnes pratiques et équipements de protection indispensables en laboratoire de prothèse dentaire.',
+   body:[
+     {h:'Pourquoi la sécurité est essentielle'},
+     {p:'Un laboratoire de prothèse dentaire utilise des machines, des produits chimiques et des matériaux qui peuvent être dangereux sans précautions adaptées. Le respect des règles d\'hygiène et de sécurité protège le prothésiste et garantit la qualité du travail.'},
+     {retenir:'Le port des équipements de protection individuelle (EPI) est obligatoire à chaque poste de travail.'},
+     {h:'Les équipements de protection individuelle'},
+     {p:'Lunettes de protection, masque anti-poussière, gants et blouse forment la base des EPI utilisés quotidiennement. Chaque poste (polissage, coulée, résine) impose des protections spécifiques adaptées au risque.'},
+     {vocab:[['EPI','Équipement de Protection Individuelle'],['Aspiration','Système d\'extraction des poussières et vapeurs'],['Fiche de données de sécurité (FDS)','Document décrivant les risques d\'un produit chimique']]},
+     {h:'La gestion des déchets'},
+     {p:'Les déchets de laboratoire (plâtre, résine, métaux) doivent être triés et éliminés selon des filières adaptées, dans le respect de l\'environnement et de la réglementation en vigueur.'}
+   ]},
+  {id:'c3', classe:'Première', matiere:'Matériaux', chapitre:'Les matériaux dentaires', title:'La zircone et les céramiques dentaires', difficulty:'Intermédiaire', duree:24,
+   desc:'Propriétés, indications et mise en œuvre de la zircone et des céramiques dans la prothèse moderne.',
+   body:[
+     {h:'Qu\'est-ce que la zircone ?'},
+     {p:'La zircone est un matériau céramique très résistant, largement utilisé en prothèse dentaire pour la réalisation de couronnes, bridges et armatures. Elle se distingue par sa biocompatibilité, sa résistance mécanique élevée et son rendu esthétique proche de la dent naturelle.'},
+     {retenir:'La zircone présente une résistance à la flexion supérieure à 900 MPa, bien plus élevée que la plupart des céramiques classiques.'},
+     {h:'Les différents types de céramiques'},
+     {p:'On distingue les céramiques feldspathiques, utilisées pour leur translucidité, les céramiques vitrocéramiques et les céramiques polycristallines comme la zircone, choisies pour leur solidité. Le choix dépend de la situation clinique et de l\'esthétique recherchée.'},
+     {table:{head:['Matériau','Résistance','Esthétique','Usage typique'],rows:[
+        ['Zircone','Très élevée','Bonne','Couronnes, bridges postérieurs'],
+        ['Céramique feldspathique','Faible','Excellente','Facettes, incrustations'],
+        ['Vitrocéramique (disilicate de lithium)','Élevée','Très bonne','Couronnes antérieures']
+     ]}},
+     {h:'Mise en œuvre par CFAO'},
+     {p:'La zircone est aujourd\'hui usinée par CFAO à partir de blocs préfrittés, puis frittée à haute température pour atteindre sa résistance finale, avant maquillage et glaçage pour un rendu naturel.'},
+     {vocab:[['Frittage','Traitement thermique qui densifie et durcit la zircone'],['Translucidité','Capacité d\'un matériau à laisser passer la lumière'],['Maquillage céramique','Application de teintes pour un rendu naturel']]}
+   ]},
+  {id:'c4', classe:'Première', matiere:'CFAO / CAO', chapitre:'Introduction à la CFAO', title:'Principes de la CFAO en prothèse dentaire', difficulty:'Intermédiaire', duree:26,
+   desc:'Comprendre la chaîne numérique : empreinte optique, conception assistée par ordinateur et usinage.',
+   body:[
+     {h:'La chaîne numérique'},
+     {p:'La CFAO (Conception et Fabrication Assistées par Ordinateur) a transformé le métier de prothésiste dentaire. Elle repose sur trois étapes : la numérisation (scanner intra-oral ou de laboratoire), la conception (logiciel de CAO) et la fabrication (usinage ou impression 3D).'},
+     {retenir:'La CFAO permet une reproductibilité et une précision impossibles à obtenir avec les seules méthodes manuelles traditionnelles.'},
+     {h:'La conception assistée par ordinateur (CAO)'},
+     {p:'Le logiciel de CAO permet de modéliser virtuellement la prothèse à partir de l\'empreinte numérique, en tenant compte de l\'anatomie, de l\'occlusion et des points de contact avec les dents voisines.'},
+     {diagram:'Schéma de la chaîne numérique : scan → CAO → usinage'},
+     {h:'La fabrication : usinage ou impression 3D'},
+     {p:'Une fois le fichier validé, la prothèse est fabriquée soit par usinage soustractif (fraisage d\'un bloc de matériau), soit par fabrication additive (impression 3D), selon le matériau et l\'indication clinique.'},
+     {vocab:[['Empreinte optique','Numérisation 3D de la bouche du patient'],['Fraisage','Usinage soustractif d\'un bloc de matériau'],['Impression 3D','Fabrication additive couche par couche']]}
+   ]},
+  {id:'c5', classe:'Première', matiere:'Prothèse fixe', chapitre:'Les couronnes', title:'Conception d\'une couronne dentaire', difficulty:'Intermédiaire', duree:22,
+   desc:'Les étapes de conception d\'une couronne, du modèle de travail à la finition.',
+   body:[
+     {h:'Qu\'est-ce qu\'une couronne ?'},
+     {p:'Une couronne dentaire est une prothèse fixe qui recouvre entièrement une dent préparée, afin de restaurer sa forme, sa fonction et son esthétique lorsque la dent est trop abîmée pour un simple soin.'},
+     {retenir:'La couronne doit respecter l\'occlusion, le point de contact avec les dents voisines et le profil d\'émergence gingival.'},
+     {h:'Les étapes de conception'},
+     {p:'À partir du modèle de travail, le prothésiste détermine la limite cervicale, reconstitue le mur axial puis façonne l\'anatomie occlusale en respectant les cuspides et les sillons naturels de la dent.'},
+     {vocab:[['Limite cervicale','Ligne de finition de la préparation dentaire'],['Profil d\'émergence','Forme de transition entre la couronne et la gencive'],['Cuspide','Relief pointu de la surface occlusale']]}
+   ]},
+  {id:'c6', classe:'Terminale', matiere:'Prothèse amovible', chapitre:'Châssis métallique', title:'Conception d\'un châssis métallique', difficulty:'Avancé', duree:30,
+   desc:'Tracé, éléments de rétention et équilibre d\'un châssis métallique pour prothèse partielle amovible.',
+   body:[
+     {h:'Le rôle du châssis métallique'},
+     {p:'Le châssis métallique constitue l\'armature rigide d\'une prothèse partielle amovible. Il assure la transmission des forces masticatoires, la rétention de la prothèse et la solidarisation avec les dents restantes.'},
+     {retenir:'Un châssis bien conçu répartit les forces sur l\'ensemble de l\'arcade pour préserver les dents supports et les tissus.'},
+     {h:'Les éléments constitutifs'},
+     {p:'Un châssis comprend une connexion majeure, des connexions mineures, des taquets occlusaux et des crochets de rétention. Chaque élément doit être tracé avec précision sur le modèle d\'étude après analyse au paralléliseur.'},
+     {table:{head:['Élément','Rôle'],rows:[
+        ['Connexion majeure','Relie et rigidifie l\'ensemble du châssis'],
+        ['Taquet occlusal','Transmet les forces le long de l\'axe de la dent'],
+        ['Crochet de rétention','Assure le maintien de la prothèse']
+     ]}},
+     {h:'L\'analyse au paralléliseur'},
+     {p:'Le paralléliseur permet de déterminer l\'axe d\'insertion de la prothèse et les zones de contre-dépouille utilisées pour la rétention, garantissant une insertion et une désinsertion sans traumatisme pour les dents supports.'},
+     {vocab:[['Paralléliseur','Instrument déterminant l\'axe d\'insertion d\'une prothèse'],['Contre-dépouille','Zone sous l\'équateur d\'une dent utilisée pour la rétention']]}
+   ]},
+  {id:'c7', classe:'Terminale', matiere:'Occlusion', chapitre:'Les rapports occlusaux', title:'Comprendre l\'occlusion et les rapports inter-arcades', difficulty:'Avancé', duree:28,
+   desc:'Les principes d\'occlusion statique et dynamique indispensables à toute reconstruction prothétique.',
+   body:[
+     {h:'Occlusion statique et dynamique'},
+     {p:'L\'occlusion désigne les rapports de contact entre les arcades dentaires supérieure et inférieure. On distingue l\'occlusion statique, en position stable, de l\'occlusion dynamique, qui étudie les mouvements de la mandibule.'},
+     {retenir:'Une prothèse mal réglée en occlusion peut provoquer des douleurs articulaires et une usure prématurée des dents.'},
+     {h:'Les mouvements mandibulaires'},
+     {p:'Les mouvements de propulsion, de latéralité et d\'ouverture-fermeture doivent être respectés lors de la conception d\'une prothèse afin d\'éviter toute interférence occlusale gênante pour le patient.'},
+     {vocab:[['Occlusion centrée','Position de fermeture maximale des arcades'],['Interférence occlusale','Contact prématuré gênant un mouvement mandibulaire'],['Articulateur','Appareil reproduisant les mouvements de la mâchoire']]}
+   ]},
+  {id:'c8', classe:'Terminale', matiere:'Fabrication', chapitre:'Impression 3D', title:'La fabrication additive appliquée à la prothèse', difficulty:'Avancé', duree:20,
+   desc:'Principes, matériaux et applications de l\'impression 3D dans les laboratoires modernes.',
+   body:[
+     {h:'Principe de la fabrication additive'},
+     {p:'L\'impression 3D construit un objet couche par couche à partir d\'un fichier numérique. En prothèse dentaire, elle est utilisée pour les modèles de travail, les guides chirurgicaux, les gouttières et certains éléments prothétiques définitifs.'},
+     {retenir:'Chaque technologie d\'impression (SLA, DLP, FDM) présente des précisions et des matériaux compatibles différents.'},
+     {h:'Choisir la bonne technologie'},
+     {p:'La stéréolithographie (SLA) et le DLP offrent une haute précision adaptée aux modèles dentaires, tandis que le FDM reste réservé à des usages moins précis. Le choix dépend de la pièce à produire et du matériau requis.'},
+     {vocab:[['SLA','Stéréolithographie, impression par photopolymérisation laser'],['DLP','Impression par projection de lumière numérique'],['Post-traitement','Étapes de nettoyage et polymérisation après impression']]}
+   ]}
+];
+
+const VIDEOS = [
+  {id:'v1', classe:'Seconde', theme:'Anatomie', duree:'6:40', title:'Visite guidée de l\'arcade dentaire', desc:'Une présentation animée des différentes dents et de leur position sur l\'arcade.',
+   resume:'Cette vidéo présente les 32 dents de la denture adulte, leur nom et leur position, à l\'aide d\'un modèle 3D animé.',
+   points:['La numérotation dentaire internationale','Les 4 familles de dents','La différence entre denture temporaire et définitive'],
+   vocab:['Arcade dentaire','Denture','Numérotation FDI']},
+  {id:'v2', classe:'Seconde', theme:'Techniques de laboratoire', duree:'9:12', title:'Prise en main des outils du prothésiste', desc:'Découverte des outils de base utilisés quotidiennement en laboratoire.',
+   resume:'Un tour d\'horizon des outils essentiels : spatules, brunissoirs, fraises et instruments de modelage.',
+   points:['Le rôle de chaque outil de base','L\'entretien du matériel','Les précautions d\'usage'],
+   vocab:['Spatule à cire','Brunissoir','Fraise']},
+  {id:'v3', classe:'Première', theme:'Matériaux', duree:'11:05', title:'De la poudre au bloc : comprendre la zircone', desc:'Le parcours de fabrication de la zircone, de la poudre céramique au bloc usinable.',
+   resume:'Cette vidéo retrace les étapes de fabrication industrielle des blocs de zircone utilisés en CFAO.',
+   points:['Le compactage de la poudre','Le préfrittage','Le frittage final à haute température'],
+   vocab:['Préfrittage','Frittage','Bloc CFAO']},
+  {id:'v4', classe:'Première', theme:'CFAO', duree:'8:30', title:'La chaîne numérique pas à pas', desc:'Du scanner à l\'usinage : toutes les étapes de la CFAO expliquées simplement.',
+   resume:'Une démonstration complète de la chaîne numérique appliquée à la réalisation d\'une couronne.',
+   points:['La numérisation du modèle','La conception sur logiciel de CAO','L\'usinage de la pièce finale'],
+   vocab:['Scanner de laboratoire','Logiciel de CAO','Usinage 5 axes']},
+  {id:'v5', classe:'Terminale', theme:'Prothèse amovible', duree:'13:20', title:'Tracer un châssis au paralléliseur', desc:'Démonstration pas à pas du tracé d\'un châssis métallique sur modèle d\'étude.',
+   resume:'Cette vidéo montre en détail l\'utilisation du paralléliseur pour déterminer l\'axe d\'insertion d\'un châssis.',
+   points:['Le réglage du paralléliseur','L\'identification des contre-dépouilles','Le tracé final du châssis'],
+   vocab:['Paralléliseur','Axe d\'insertion','Contre-dépouille']},
+  {id:'v6', classe:'Terminale', theme:'Prothèse fixe', duree:'10:45', title:'Réaliser l\'anatomie occlusale d\'une couronne', desc:'Techniques de modelage pour restituer des reliefs occlusaux naturels et fonctionnels.',
+   resume:'Un prothésiste expérimenté détaille sa méthode pour sculpter une anatomie occlusale fidèle et fonctionnelle.',
+   points:['Le respect des cuspides et sillons','L\'équilibre occlusal','Les finitions et polissage'],
+   vocab:['Cuspide','Sillon','Polissage']}
+];
+
+const DOCUMENTS = [
+  {id:'d1', classe:'Seconde', matiere:'Anatomie dentaire', type:'Fiche de révision', taille:'1.2 Mo', title:'Fiche — Les dents et leur numérotation', desc:'Synthèse illustrée de la numérotation dentaire internationale (FDI).'},
+  {id:'d2', classe:'Seconde', matiere:'Hygiène et sécurité', type:'Fiche technique', taille:'0.8 Mo', title:'Fiche technique — Équipements de protection', desc:'Liste et usage des EPI obligatoires en laboratoire.'},
+  {id:'d3', classe:'Première', matiere:'Matériaux', type:'Fiche de vocabulaire', taille:'0.6 Mo', title:'Vocabulaire — Céramiques et zircone', desc:'Lexique des termes techniques liés aux matériaux céramiques.'},
+  {id:'d4', classe:'Première', matiere:'CFAO / CAO', type:'Fiche de révision', taille:'1.5 Mo', title:'Fiche — La chaîne numérique en CFAO', desc:'Schéma récapitulatif des étapes scan → CAO → usinage.'},
+  {id:'d5', classe:'Terminale', matiere:'Prothèse amovible', type:'Annale', taille:'2.1 Mo', title:'Annale — Sujet d\'examen châssis métallique', desc:'Sujet corrigé d\'une session précédente sur la conception de châssis.'},
+  {id:'d6', classe:'Terminale', matiere:'Occlusion', type:'Sujet d\'entraînement', taille:'1.0 Mo', title:'Sujet d\'entraînement — Rapports occlusaux', desc:'Exercices d\'application sur les mouvements mandibulaires et l\'occlusion.'}
+];
+
+const EXERCISES = [
+  {id:'e1', classe:'Seconde', matiere:'Anatomie dentaire', title:'QCM — Les familles de dents', type:'qcm', questions:[
+    {q:'Quelle famille de dents sert principalement à couper les aliments ?', options:['Les molaires','Les incisives','Les canines','Les prémolaires'], correct:1, explain:'Les incisives, situées à l\'avant de la bouche, ont un bord tranchant adapté à la coupe des aliments.'},
+    {q:'Combien de dents compte une denture adulte complète ?', options:['28','30','32','34'], correct:2, explain:'Une denture adulte complète compte 32 dents, dents de sagesse incluses.'},
+    {q:'Quel tissu recouvre la couronne dentaire ?', options:['La dentine','La pulpe','Le cément','L\'émail'], correct:3, explain:'L\'émail est le tissu le plus dur du corps humain et recouvre la couronne visible de la dent.'}
+  ]},
+  {id:'e2', classe:'Seconde', matiere:'Hygiène et sécurité', title:'Vrai ou Faux — Sécurité au laboratoire', type:'vf', questions:[
+    {q:'Le port de lunettes de protection est facultatif lors du polissage.', options:['Vrai','Faux'], correct:1, explain:'Le port de lunettes est obligatoire lors du polissage pour se protéger des projections.'},
+    {q:'Les déchets de résine doivent être triés séparément.', options:['Vrai','Faux'], correct:0, explain:'Les déchets de résine sont des déchets spécifiques qui doivent suivre une filière d\'élimination adaptée.'}
+  ]},
+  {id:'e3', classe:'Première', matiere:'Matériaux', title:'Texte à trous — La zircone', type:'trou', questions:[
+    {q:'La zircone est un matériau ___ très résistant, utilisé pour les couronnes et les ___.', blanks:['céramique','bridges'], explain:'La zircone, matériau céramique, est appréciée pour sa résistance en couronnes et bridges.'}
+  ]},
+  {id:'e4', classe:'Première', matiere:'CFAO / CAO', title:'Associer — Étapes de la CFAO', type:'assoc', pairs:[
+    ['Numérisation','Capture de la forme en 3D'],['Conception','Modélisation sur logiciel de CAO'],['Fabrication','Usinage ou impression de la pièce']
+  ]},
+  {id:'e5', classe:'Terminale', matiere:'Prothèse amovible', title:'QCM — Le châssis métallique', type:'qcm', questions:[
+    {q:'Quel instrument permet de déterminer l\'axe d\'insertion d\'un châssis ?', options:['Le paralléliseur','L\'articulateur','Le pied à coulisse','Le four à frittage'], correct:0, explain:'Le paralléliseur sert précisément à déterminer l\'axe d\'insertion et les contre-dépouilles.'},
+    {q:'Quel élément transmet les forces le long de l\'axe de la dent support ?', options:['Le crochet','Le taquet occlusal','La connexion majeure','La selle'], correct:1, explain:'Le taquet occlusal transmet les forces masticatoires le long de l\'axe de la dent.'}
+  ]},
+  {id:'e6', classe:'Terminale', matiere:'Occlusion', title:'Vrai ou Faux — L\'occlusion', type:'vf', questions:[
+    {q:'L\'occlusion centrée correspond à la position de fermeture maximale des arcades.', options:['Vrai','Faux'], correct:0, explain:'C\'est la définition même de l\'occlusion centrée.'},
+    {q:'Une interférence occlusale n\'a aucune conséquence clinique.', options:['Vrai','Faux'], correct:1, explain:'Une interférence occlusale peut provoquer douleurs et usure prématurée.'}
+  ]}
+];
+
+const QUIZZES = [
+  {id:'q1', classe:'Seconde', matiere:'Anatomie dentaire', chapitre:'Les différentes dents', difficulty:'Facile', duree:5, title:'Quiz Anatomie dentaire — Niveau Seconde', questions:[
+    {q:'Quelle dent est la plus proche de la ligne médiane ?', options:['La canine','L\'incisive centrale','La molaire','La prémolaire'], correct:1, explain:'L\'incisive centrale est la dent la plus proche de la ligne médiane du visage.'},
+    {q:'Quel tissu contient les nerfs de la dent ?', options:['L\'émail','La dentine','La pulpe','Le cément'], correct:2, explain:'La pulpe, au centre de la dent, contient les nerfs et les vaisseaux sanguins.'},
+    {q:'Combien de molaires compte une arcade adulte ?', options:['4','6','8','10'], correct:1, explain:'Chaque arcade adulte compte 6 molaires, dont les dents de sagesse.'},
+    {q:'Quelle dent sert principalement à déchirer les aliments ?', options:['L\'incisive','La canine','La prémolaire','La molaire'], correct:1, explain:'La canine, pointue, est adaptée pour déchirer les aliments.'},
+    {q:'Le cément recouvre principalement :', options:['La couronne','La racine','La pulpe','L\'émail'], correct:1, explain:'Le cément est le tissu minéralisé qui recouvre la racine de la dent.'}
+  ]},
+  {id:'q2', classe:'Seconde', matiere:'Hygiène et sécurité', chapitre:'Sécurité au laboratoire', difficulty:'Facile', duree:4, title:'Quiz Sécurité — Niveau Seconde', questions:[
+    {q:'Que signifie le sigle EPI ?', options:['Équipement Professionnel Individuel','Équipement de Protection Individuelle','Élément de Protection Intégrée','Équipement Personnel d\'Intervention'], correct:1, explain:'EPI signifie Équipement de Protection Individuelle.'},
+    {q:'La FDS d\'un produit décrit :', options:['Son prix','Ses risques et précautions d\'usage','Sa couleur','Son fabricant uniquement'], correct:1, explain:'La Fiche de Données de Sécurité décrit les risques et les précautions liées à un produit.'},
+    {q:'Le port du masque est recommandé lors :', options:['Du polissage','De la lecture d\'un plan','De la prise de rendez-vous','Du rangement des dossiers'], correct:0, explain:'Le polissage génère des poussières nécessitant le port d\'un masque adapté.'}
+  ]},
+  {id:'q3', classe:'Première', matiere:'Matériaux', chapitre:'Les matériaux dentaires', difficulty:'Intermédiaire', duree:6, title:'Quiz Matériaux — Zircone et céramiques', questions:[
+    {q:'La zircone appartient à la famille des :', options:['Métaux précieux','Céramiques polycristallines','Résines composites','Alliages non précieux'], correct:1, explain:'La zircone est une céramique polycristalline, appréciée pour sa résistance.'},
+    {q:'Le frittage a pour but :', options:['De colorer le matériau','De densifier et durcir la zircone','De polir la surface','De réduire le poids'], correct:1, explain:'Le frittage densifie et durcit la zircone à haute température.'},
+    {q:'Quel matériau est reconnu pour sa translucidité exceptionnelle ?', options:['La zircone','La céramique feldspathique','Le chrome-cobalt','Le titane'], correct:1, explain:'La céramique feldspathique est réputée pour sa translucidité proche de l\'émail naturel.'},
+    {q:'La résistance à la flexion de la zircone dépasse généralement :', options:['200 MPa','500 MPa','900 MPa','2000 MPa'], correct:2, explain:'La zircone dépasse généralement 900 MPa de résistance à la flexion.'}
+  ]},
+  {id:'q4', classe:'Première', matiere:'CFAO / CAO', chapitre:'Introduction à la CFAO', difficulty:'Intermédiaire', duree:5, title:'Quiz CFAO — Chaîne numérique', questions:[
+    {q:'La première étape de la chaîne numérique est :', options:['L\'usinage','La numérisation','Le maquillage','Le polissage'], correct:1, explain:'La chaîne numérique commence toujours par la numérisation (scan) du modèle.'},
+    {q:'Le fraisage est une méthode de fabrication :', options:['Additive','Soustractive','Manuelle uniquement','Chimique'], correct:1, explain:'Le fraisage retire de la matière : c\'est une fabrication soustractive.'},
+    {q:'L\'impression 3D est une fabrication :', options:['Soustractive','Additive','Manuelle','Thermique uniquement'], correct:1, explain:'L\'impression 3D construit la pièce couche par couche : c\'est une fabrication additive.'}
+  ]},
+  {id:'q5', classe:'Terminale', matiere:'Prothèse amovible', chapitre:'Châssis métallique', difficulty:'Avancé', duree:7, title:'Quiz Châssis métallique — Niveau Terminale', questions:[
+    {q:'Le paralléliseur permet de déterminer :', options:['La teinte de la prothèse','L\'axe d\'insertion','Le poids du châssis','La température de coulée'], correct:1, explain:'Le paralléliseur détermine l\'axe d\'insertion et les contre-dépouilles utiles à la rétention.'},
+    {q:'La connexion majeure d\'un châssis a pour rôle :', options:['De relier et rigidifier l\'ensemble','De colorer la prothèse','De remplacer une dent','De nettoyer le châssis'], correct:0, explain:'La connexion majeure relie et rigidifie l\'ensemble du châssis métallique.'},
+    {q:'Une contre-dépouille est utilisée pour :', options:['L\'esthétique','La rétention de la prothèse','La mastication','Le polissage'], correct:1, explain:'La contre-dépouille est la zone utilisée pour la rétention de la prothèse amovible.'}
+  ]},
+  {id:'q6', classe:'Terminale', matiere:'Occlusion', chapitre:'Les rapports occlusaux', difficulty:'Avancé', duree:6, title:'Quiz Occlusion — Rapports inter-arcades', questions:[
+    {q:'L\'occlusion statique étudie :', options:['Les mouvements mandibulaires','Les rapports de contact en position stable','La couleur des dents','La vitesse de mastication'], correct:1, explain:'L\'occlusion statique concerne les rapports de contact en position stable des arcades.'},
+    {q:'Une interférence occlusale peut provoquer :', options:['Une meilleure mastication','Des douleurs articulaires','Un blanchiment naturel','Rien de particulier'], correct:1, explain:'Une interférence occlusale peut provoquer douleurs articulaires et usure prématurée.'},
+    {q:'L\'articulateur est utilisé pour :', options:['Reproduire les mouvements de la mâchoire','Nettoyer les prothèses','Mesurer la teinte','Stériliser les instruments'], correct:0, explain:'L\'articulateur reproduit les mouvements mandibulaires pour ajuster l\'occlusion.'}
+  ]}
+];
+
+/* ============================================================
+   IDENTITÉ — compte Google réel (Firebase Authentication)
+   ============================================================ */
+let IDENTITY = { ready:false, signedIn:false, uid:null, name:'', email:'', photoURL:'', isAdmin:false };
+let ADMIN = {courses:[],videos:[],documents:[],quizzes:[],exercises:[]};
+function freshState(){
+  return {
+    profile:{prenom:'', nom:'', classe:CLASSES[0]},
+    completedCourses:[], watchedVideos:[], exerciseResults:{}, quizResults:{},
+    favorites:{courses:[],videos:[],documents:[],exercises:[],quizzes:[]},
+    streak:0, lastVisit:null, needsOnboarding:true
+  };
+}
+let STATE = freshState();
+
+let _unsubUserDoc = null;
+let _unsubContent = [];
+let _saveTimer = null;
+
+function signInGoogle(){
+  if(!FIREBASE_OK){ toast('Connexion indisponible — Firebase ne s\'est pas chargé'); return; }
+  const provider = new firebase.auth.GoogleAuthProvider();
+  fbAuth.signInWithPopup(provider).catch(err=>{
+    console.error(err);
+    toast('Connexion annulée ou impossible');
+  });
+}
+function signOutUser(){
+  if(!FIREBASE_OK) return;
+  fbAuth.signOut().then(()=>{ nav('/'); toast('Déconnecté'); });
+}
+
+function initAuth(){
+  if(!FIREBASE_OK){ IDENTITY.ready = true; render(); return; }
+  fbAuth.onAuthStateChanged(async (user)=>{
+    // clean up previous subscriptions
+    if(_unsubUserDoc){ _unsubUserDoc(); _unsubUserDoc=null; }
+
+    if(!user){
+      IDENTITY = { ready:true, signedIn:false, uid:null, name:'', email:'', photoURL:'', isAdmin:false };
+      STATE = freshState();
+      render();
+      return;
+    }
+
+    IDENTITY = {
+      ready:true, signedIn:true, uid:user.uid,
+      name:user.displayName||'', email:user.email||'', photoURL:user.photoURL||'',
+      isAdmin:false
+    };
+
+    // vérifie si cet utilisateur est administrateur (document admins/{uid})
+    try{
+      const adminSnap = await fbDB.collection('admins').doc(user.uid).get();
+      IDENTITY.isAdmin = adminSnap.exists;
+    }catch(e){ console.warn('Vérification admin impossible', e); }
+
+    subscribeUserDoc(user.uid);
+    render();
+  });
+}
+
+function subscribeUserDoc(uid){
+  const ref = fbDB.collection('users').doc(uid);
+  _unsubUserDoc = ref.onSnapshot(async (snap)=>{
+    if(snap.exists){
+      const d = snap.data();
+      STATE = Object.assign(freshState(), d);
+      STATE.needsOnboarding = !d.onboarded;
+    } else {
+      STATE = freshState();
+      STATE.profile.prenom = (IDENTITY.name||'Élève').split(' ')[0];
+      STATE.profile.nom = (IDENTITY.name||'').split(' ').slice(1).join(' ');
+      try{ await ref.set(toStatePayload()); }catch(e){ console.warn('Création du profil impossible', e); }
+    }
+    render();
+  }, err=>{ console.warn('Synchronisation du profil impossible', err); });
+}
+
+function toStatePayload(){
+  return {
+    profile: STATE.profile,
+    completedCourses: STATE.completedCourses,
+    watchedVideos: STATE.watchedVideos,
+    exerciseResults: STATE.exerciseResults,
+    quizResults: STATE.quizResults,
+    favorites: STATE.favorites,
+    streak: STATE.streak,
+    lastVisit: STATE.lastVisit,
+    onboarded: !STATE.needsOnboarding
+  };
+}
+
+function saveState(){
+  if(!FIREBASE_OK || !IDENTITY.signedIn){ toast('Connecte-toi avec Google pour sauvegarder ta progression'); return; }
+  clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(()=>{
+    fbDB.collection('users').doc(IDENTITY.uid).set(toStatePayload())
+      .catch(e=>{ console.warn('Sauvegarde impossible', e); toast('Sauvegarde impossible pour le moment'); });
+  }, 250);
+}
+
+/* ---- contenu pédagogique ajouté par l'administrateur (Firestore) ---- */
+const CONTENT_COLLECTIONS = ['courses','videos','documents','quizzes','exercises'];
+function subscribeContent(){
+  CONTENT_COLLECTIONS.forEach(name=>{
+    const un = fbDB.collection(name).onSnapshot(snap=>{
+      ADMIN[name] = snap.docs.map(d=>Object.assign({id:d.id}, d.data()));
+      render();
+    }, err=>console.warn(name+' — synchronisation impossible', err));
+    _unsubContent.push(un);
+  });
+}
+function allCourses(){ return [...COURSES, ...ADMIN.courses]; }
+function allVideos(){ return [...VIDEOS, ...ADMIN.videos]; }
+function allDocuments(){ return [...DOCUMENTS, ...ADMIN.documents]; }
+function allQuizzes(){ return [...QUIZZES, ...ADMIN.quizzes]; }
+function allExercises(){ return [...EXERCISES, ...ADMIN.exercises]; }
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.innerHTML = I.check + ' <span>'+msg+'</span>';
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=>t.classList.remove('show'), 2400);
+}
+
+/* ============================================================
+   ROUTER
+   ============================================================ */
+function nav(path){ location.hash = '#'+path; }
+window.addEventListener('hashchange', render);
+window.addEventListener('DOMContentLoaded', ()=>{
+  render();
+  initAuth();
+  if(FIREBASE_OK) subscribeContent();
+});
+
+function currentRoute(){
+  let h = location.hash.replace(/^#/,'') || '/';
+  const [path, query] = h.split('?');
+  const parts = path.split('/').filter(Boolean);
+  const q = {};
+  if(query) query.split('&').forEach(kv=>{ const [k,v]=kv.split('='); q[k]=decodeURIComponent(v||''); });
+  return {path, parts, q};
+}
+
+/* ============================================================
+   SHARED CHROME: header, mobile drawer, search, footer, bottom nav
+   ============================================================ */
+const NAV_ITEMS = [
+  {path:'/', label:'Accueil'},
+  {path:'/cours', label:'Cours'},
+  {path:'/videos', label:'Vidéos'},
+  {path:'/documents', label:'Documents'},
+  {path:'/exercices', label:'Exercices'},
+  {path:'/quiz', label:'Quiz'},
+  {path:'/progression', label:'Ma progression'}
+];
+const MOBILE_ITEMS = [
+  {path:'/', label:'Accueil', ic:I.home},
+  {path:'/cours', label:'Cours', ic:I.book},
+  {path:'/exercices', label:'Exercices', ic:I.pencil},
+  {path:'/videos', label:'Vidéos', ic:I.video},
+  {path:'/profil', label:'Profil', ic:I.user}
+];
+
+function chrome(activeTop, body){
+  return `
+  <header class="site">
+    <div class="wrap header-inner">
+      <a href="#/" class="logo" onclick="nav('/');return false;">
+        <span class="mark">${I.tooth}</span>
+        <span>Prothèse<br><small>RÉVISION</small></span>
+      </a>
+      <nav class="main-nav">
+        ${NAV_ITEMS.map(n=>`<a href="#${n.path}" class="${activeTop===n.path?'active':''}" onclick="nav('${n.path}');return false;">${n.label}</a>`).join('')}
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" title="Rechercher" onclick="openSearch()">${I.search}</button>
+        <button class="icon-btn" title="Favoris" onclick="nav('/favoris')">${I.starOutline}</button>
+        ${identityHeaderBlock()}
+        <button class="icon-btn burger" title="Menu" onclick="openDrawer()">${I.menu}</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobileDrawer" onclick="if(event.target===this)closeDrawer()">
+    <div class="drawer-panel">
+      <button class="drawer-close" onclick="closeDrawer()">${I.x}</button>
+      ${NAV_ITEMS.map(n=>`<a href="#${n.path}" class="${activeTop===n.path?'active':''}" onclick="closeDrawer();nav('${n.path}');return false;">${n.label}</a>`).join('')}
+      <a href="#/profil" onclick="closeDrawer();nav('/profil');return false;">Mon profil</a>
+      <a href="#/favoris" onclick="closeDrawer();nav('/favoris');return false;">Mes favoris</a>
+      ${IDENTITY.isAdmin ? `<a href="#/admin" onclick="closeDrawer();nav('/admin');return false;">Espace administrateur</a>` : ''}
+      <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
+        ${IDENTITY.signedIn ? `<button class="btn btn-outline btn-block" onclick="closeDrawer();signOutUser()">Se déconnecter</button>`
+          : `<button class="btn btn-primary btn-block" onclick="closeDrawer();signInGoogle()" style="background:#fff;color:#3c4043;border:1.5px solid var(--gray-300);display:flex;align-items:center;justify-content:center;gap:10px;">${I.google} Se connecter avec Google</button>`}
+      </div>
+    </div>
+  </div>
+
+  <div id="searchOverlay" onclick="if(event.target===this)closeSearch()">
+    <div class="search-box">
+      <div class="search-input-row">
+        ${I.search}
+        <input id="searchInput" type="text" placeholder="Rechercher : zircone, anatomie, CFAO..." oninput="doSearch(this.value)">
+        <button class="icon-btn" onclick="closeSearch()">${I.x}</button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <main><div class="wrap reveal" id="mainWrap">${body}</div></main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:#fff; margin-bottom:12px;"><span class="mark">${I.tooth}</span><span>Prothèse<br><small style="color:rgba(255,255,255,.55)">RÉVISION</small></span></div>
+          <p style="font-size:13.5px; line-height:1.6; max-width:260px; color:rgba(255,255,255,.6);">La plateforme de révision dédiée aux élèves de Seconde, Première et Terminale en prothèse dentaire.</p>
+        </div>
+        <div>
+          <h5>Navigation</h5>
+          <a href="#/cours" onclick="nav('/cours');return false;">Cours</a>
+          <a href="#/videos" onclick="nav('/videos');return false;">Vidéos</a>
+          <a href="#/documents" onclick="nav('/documents');return false;">Documents</a>
+          <a href="#/exercices" onclick="nav('/exercices');return false;">Exercices</a>
+        </div>
+        <div>
+          <h5>Mon espace</h5>
+          <a href="#/quiz" onclick="nav('/quiz');return false;">Quiz</a>
+          <a href="#/progression" onclick="nav('/progression');return false;">Ma progression</a>
+          <a href="#/favoris" onclick="nav('/favoris');return false;">Mes favoris</a>
+          <a href="#/profil" onclick="nav('/profil');return false;">Mon profil</a>
+        </div>
+        <div>
+          <h5>Ressources</h5>
+          ${IDENTITY.isAdmin ? `<a href="#/admin" onclick="nav('/admin');return false;">Espace administrateur</a>` : ''}
+          <a href="#/" onclick="nav('/');return false;">Aide &amp; contact</a>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <a href="mailto:oscar.cam092010@gmail.com">oscar.cam092010@gmail.com</a>
+          <a href="tel:0674851339">06 74 85 13 39</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Prothèse Révision — plateforme pédagogique</span>
+        <span>Site créé et animé par Oscar Camousseigt</span>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="mobile-nav">
+    ${MOBILE_ITEMS.map(n=>`<a href="#${n.path}" class="${activeTop===n.path?'active':''}" onclick="nav('${n.path}');return false;">${n.ic}<span>${n.label}</span></a>`).join('')}
+  </nav>
+  `;
+}
+
+function openDrawer(){ document.getElementById('mobileDrawer').classList.add('open'); }
+function closeDrawer(){ document.getElementById('mobileDrawer').classList.remove('open'); }
+function openSearch(){ document.getElementById('searchOverlay').classList.add('open'); setTimeout(()=>document.getElementById('searchInput').focus(),50); document.getElementById('searchResults').innerHTML = '<div class="search-empty">Recherchez un cours, une vidéo, un document, un exercice ou un quiz.</div>'; }
+function closeSearch(){ document.getElementById('searchOverlay').classList.remove('open'); }
+function doSearch(val){
+  const res = document.getElementById('searchResults');
+  if(!val || val.trim().length<2){ res.innerHTML = '<div class="search-empty">Continuez à taper pour lancer la recherche…</div>'; return; }
+  const q = val.toLowerCase();
+  const hits = [];
+  allCourses().forEach(c=>{ if((c.title+c.desc+c.matiere).toLowerCase().includes(q)) hits.push({type:'Cours',label:c.title,sub:c.classe+' · '+c.matiere,go:'/cours/'+c.id}); });
+  allVideos().forEach(v=>{ if((v.title+v.desc+v.theme).toLowerCase().includes(q)) hits.push({type:'Vidéo',label:v.title,sub:v.classe+' · '+v.theme,go:'/videos/'+v.id}); });
+  allDocuments().forEach(d=>{ if((d.title+d.desc+d.matiere).toLowerCase().includes(q)) hits.push({type:'Document',label:d.title,sub:d.classe+' · '+d.matiere,go:'/documents'}); });
+  allExercises().forEach(e=>{ if((e.title+e.matiere).toLowerCase().includes(q)) hits.push({type:'Exercice',label:e.title,sub:e.classe+' · '+e.matiere,go:'/exercices/'+e.id}); });
+  allQuizzes().forEach(qz=>{ if((qz.title+qz.matiere).toLowerCase().includes(q)) hits.push({type:'Quiz',label:qz.title,sub:qz.classe+' · '+qz.matiere,go:'/quiz/'+qz.id}); });
+  if(hits.length===0){ res.innerHTML = '<div class="search-empty">Aucun résultat pour « '+val+' ».</div>'; return; }
+  res.innerHTML = hits.slice(0,20).map(h=>`<a class="sr-item" href="#${h.go}" onclick="closeSearch();nav('${h.go}');return false;"><span class="sr-tag">${h.type}</span><span style="flex:1;"><b style="font-size:14px;">${h.label}</b><br><span style="font-size:12px;color:var(--gray-500);">${h.sub}</span></span>${I.arrowR}</a>`).join('');
+}
+
+/* identité — bouton Google dans le header */
+function identityHeaderBlock(){
+  if(!IDENTITY.ready){
+    return `<span class="icon-btn" style="opacity:.4;">${I.user}</span>`;
+  }
+  if(IDENTITY.signedIn){
+    const photo = IDENTITY.photoURL
+      ? `<img src="${IDENTITY.photoURL}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`
+      : I.user;
+    return `<button class="icon-btn" title="${(IDENTITY.name||'Mon profil').replace(/"/g,'')}" onclick="nav('/profil')" style="overflow:hidden;padding:0;">${photo}</button>`;
+  }
+  return `<button class="btn btn-outline btn-sm" onclick="signInGoogle()" style="display:flex;align-items:center;gap:8px;">${I.google} Se connecter avec Google</button>`;
+}
+
+/* favorites */
+function isFav(type,id){ return STATE.favorites[type].includes(id); }
+function toggleFav(type,id,ev){
+  if(ev) ev.stopPropagation();
+  const arr = STATE.favorites[type];
+  const i = arr.indexOf(id);
+  if(i>-1){ arr.splice(i,1); toast('Retiré des favoris'); } else { arr.push(id); toast('Ajouté aux favoris'); }
+  saveState(); render();
+}
+
+/* ============================================================
+   RENDER helpers
+   ============================================================ */
+function difficultyPill(d){
+  const map = {'Facile':'','Intermédiaire':'cyan','Avancé':'gray'};
+  return `<span class="pill ${map[d]||''}">${d}</span>`;
+}
+function courseCard(c){
+  const grad = gradFor(c.id);
+  const done = STATE.completedCourses.includes(c.id);
+  return `<div class="card hoverable course-card" onclick="nav('/cours/${c.id}')" style="cursor:pointer;">
+    <div class="thumb ${grad}"><div class="dot-pattern"></div>${iconFor(c.matiere)}${done?`<span class="thumb-dur">${I.check} Terminé</span>`:''}</div>
+    <div class="cc-body">
+      <div class="cc-meta"><span class="pill">${c.classe}</span><span class="pill gray">${c.matiere}</span></div>
+      <h4>${c.title}</h4>
+      <p class="desc">${c.desc}</p>
+      <div class="cc-foot">
+        <span style="font-size:12px;color:var(--gray-500);display:flex;align-items:center;gap:5px;">${I.clock} ${c.duree} min · ${c.difficulty}</span>
+        <button class="fav-btn ${isFav('courses',c.id)?'active':''}" onclick="toggleFav('courses','${c.id}',event)">${isFav('courses',c.id)?I.star:I.starOutline}</button>
+      </div>
+    </div>
+  </div>`;
+}
+function videoCard(v){
+  const grad = gradFor(v.id);
+  return `<div class="card hoverable" onclick="nav('/videos/${v.id}')" style="cursor:pointer; overflow:hidden;">
+    <div class="thumb ${grad}" style="height:160px;"><div class="dot-pattern"></div>
+      <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;">${I.play}</div>
+      <span class="thumb-dur">${v.duree}</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-meta"><span class="pill">${v.classe}</span><span class="pill gray">${v.theme}</span></div>
+      <h4>${v.title}</h4>
+      <p class="desc">${v.desc}</p>
+      <div class="cc-foot">
+        <span style="font-size:12px;color:var(--gray-500);">${STATE.watchedVideos.includes(v.id)?'✅ Regardée':'Non visionnée'}</span>
+        <button class="fav-btn ${isFav('videos',v.id)?'active':''}" onclick="toggleFav('videos','${v.id}',event)">${isFav('videos',v.id)?I.star:I.starOutline}</button>
+      </div>
+    </div>
+  </div>`;
+}
+function docCard(d){
+  const grad = gradFor(d.id);
+  return `<div class="card hoverable doc-card">
+    <div class="doc-ic ${grad}">${I.doc}</div>
+    <div class="doc-info">
+      <h4>${d.title}</h4>
+      <div class="doc-meta">
+        <span class="pill">${d.classe}</span><span class="pill gray">${d.matiere}</span><span>${d.type} · ${d.taille}</span>
+      </div>
+    </div>
+    <div class="doc-actions">
+      <button class="fav-btn ${isFav('documents',d.id)?'active':''}" onclick="toggleFav('documents','${d.id}',event)">${isFav('documents',d.id)?I.star:I.starOutline}</button>
+      <button class="icon-btn" title="Consulter" onclick="toast('Ouverture du document…')">${I.eye}</button>
+      <button class="icon-btn" title="Télécharger" onclick="toast('Téléchargement lancé')">${I.download}</button>
+    </div>
+  </div>`;
+}
+function quizCard(q){
+  const best = STATE.quizResults[q.id];
+  return `<div class="card hoverable quiz-card">
+    <div class="qc-top">
+      <div>
+        <div class="cc-meta" style="margin-bottom:8px;"><span class="pill">${q.classe}</span><span class="pill gray">${q.matiere}</span></div>
+        <h4>${q.title}</h4>
+      </div>
+      <button class="fav-btn ${isFav('quizzes',q.id)?'active':''}" onclick="toggleFav('quizzes','${q.id}',event)">${isFav('quizzes',q.id)?I.star:I.starOutline}</button>
+    </div>
+    <div class="qc-meta">
+      <span>${I.quiz} ${q.questions.length} questions</span>
+      <span>${I.clock} ${q.duree} min</span>
+      <span>${difficultyPill(q.difficulty)}</span>
+      ${best!==undefined?`<span style="color:var(--cyan-dark); font-weight:700;">${I.trophy} ${best}%</span>`:''}
+    </div>
+    <button class="btn btn-primary btn-block" onclick="nav('/quiz/${q.id}')">${best!==undefined?'Refaire le quiz':'Commencer'}</button>
+  </div>`;
+}
+function exCard(e){
+  const done = STATE.exerciseResults[e.id];
+  const typeLabel = {qcm:'QCM',vf:'Vrai / Faux',trou:'Texte à trous',assoc:'Associer'}[e.type];
+  return `<div class="card hoverable" style="padding:20px; cursor:pointer;" onclick="nav('/exercices/${e.id}')">
+    <div class="cc-meta" style="margin-bottom:10px;"><span class="pill">${e.classe}</span><span class="pill gray">${e.matiere}</span><span class="pill cyan">${typeLabel}</span></div>
+    <h4 style="font-size:15.5px; margin-bottom:8px;">${e.title}</h4>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-size:12.5px; color:var(--gray-500);">${done?`${I.check} Fait — ${done}%`:'Non commencé'}</span>
+      ${I.arrowR}
+    </div>
+  </div>`;
+}
+
+/* ============================================================
+   VIEWS
+   ============================================================ */
+function viewHome(){
+  const classCards = [
+    {c:'Seconde', color:'#18BEC9', desc:'Découvrir les bases de la prothèse dentaire.', ic:I.tooth},
+    {c:'Première', color:'#1861B0', desc:'Approfondir les techniques et les connaissances professionnelles.', ic:I.tool},
+    {c:'Terminale', color:'#7C57D9', desc:'Préparer les évaluations et examens.', ic:I.trophy}
+  ];
+  const featured = allCourses().slice(0,3);
+  const pct = computeGlobalProgress();
+  return `
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="pill cyan">Plateforme e-learning · Seconde à Terminale</span>
+        <h1 style="margin-top:16px;">Maîtrisez la prothèse dentaire, révisez avec <span class="accent">confiance</span>.</h1>
+        <p class="lead">Cours, vidéos, documents, exercices et quiz réunis en un seul endroit pour progresser sereinement, du premier cours d'anatomie jusqu'aux révisions d'examen.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="nav('/exercices')">Commencer à réviser ${I.arrowR}</button>
+          <button class="btn btn-outline" onclick="nav('/cours')">Découvrir les cours</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="ic">${I.book}</span><span>${allCourses().length}+<br>Cours complets</span></div>
+          <div class="hero-stat"><span class="ic">${I.pencil}</span><span>${allExercises().length}+<br>Exercices interactifs</span></div>
+          <div class="hero-stat"><span class="ic">${I.chart}</span><span>Suivi<br>de progression</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="blob b1"></div><div class="blob b2"></div>
+        <svg viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="86" stroke="rgba(255,255,255,.25)" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <path d="M100 46c-18 0-27 10-37 10-8 0-16-7-24 2-11 12-8 34-2 52 5 18 11 36 18 52 4 10 9 22 19 22 12 0 13-18 16-30 3-9 6-16 12-16s9 7 12 16c3 12 4 30 16 30 10 0 15-12 19-22 7-16 13-34 18-52 6-18 8-40-2-52-8-9-16-2-24-2-10 0-19-10-37-10Z" fill="#fff" opacity=".95"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="section-head"><div><h2 class="section-title">Choisis ton niveau</h2><p class="section-sub">Retrouve immédiatement les contenus adaptés à ta classe.</p></div></div>
+    <div class="grid cols-3">
+      ${classCards.map(cc=>`
+        <div class="card hoverable level-card">
+          <div class="lv-badge" style="background:${cc.color};">${cc.ic}</div>
+          <h3>${cc.c}</h3>
+          <p>${cc.desc}</p>
+          <button class="btn btn-outline" style="align-self:flex-start;" onclick="nav('/cours?classe=${encodeURIComponent(cc.c)}')">Voir les cours ${I.arrowR}</button>
+        </div>`).join('')}
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-soft); border-radius:32px;">
+    <div class="section-head"><div><h2 class="section-title">Apprenez et entraînez-vous efficacement</h2><p class="section-sub">Tout ce dont vous avez besoin pour progresser à votre rythme.</p></div></div>
+    <div class="grid cols-4">
+      <div class="card feature-box"><div class="fic">${I.book}</div><h4>Cours complets</h4><p>Des leçons claires et illustrées pour comprendre tous les concepts clés.</p></div>
+      <div class="card feature-box"><div class="fic">${I.pencil}</div><h4>Exercices interactifs</h4><p>Mettez en pratique vos connaissances avec des exercices variés et corrigés.</p></div>
+      <div class="card feature-box"><div class="fic">${I.quiz}</div><h4>Quiz &amp; évaluations</h4><p>Testez-vous par chapitre et identifiez vos points à retravailler.</p></div>
+      <div class="card feature-box"><div class="fic">${I.chart}</div><h4>Suivi de progression</h4><p>Retrouvez votre avancement tout au long de l'année, classe par classe.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h2 class="section-title">Découvrez nos cours clés</h2><p class="section-sub">Quelques cours parmi les plus consultés en ce moment.</p></div>
+      <button class="btn btn-ghost" onclick="nav('/cours')">Tous les cours ${I.arrowR}</button>
+    </div>
+    <div class="grid cols-3">${featured.map(courseCard).join('')}</div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h2 class="section-title">Suivez votre progression</h2><p class="section-sub">Aperçu de votre tableau de bord personnel.</p></div>
+      <button class="btn btn-ghost" onclick="nav('/progression')">Voir le détail ${I.arrowR}</button>
+    </div>
+    <div class="mini-dash">
+      <div class="card donut-wrap">
+        ${donutSvg(pct)}
+        <span style="font-size:13px; color:var(--gray-500); font-weight:600;">Progression générale</span>
+      </div>
+      <div class="card" style="padding:22px;">
+        <h4 style="font-size:15px; margin-bottom:8px;">Activité récente</h4>
+        ${recentActivityRows(4)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cta-banner">
+      <div>
+        <h2>Révisez. Entraînez-vous. Réussissez.</h2>
+        <p>Votre réussite en prothèse dentaire commence ici, avec des contenus pensés pour chaque niveau.</p>
+        <div style="margin-top:22px;"><button class="btn btn-cyan" onclick="nav('/exercices')">Commencer maintenant ${I.arrowR}</button></div>
+      </div>
+      <div class="cb-visual"><svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="90" fill="rgba(255,255,255,.08)"/><path d="M100 56c-16 0-24 9-33 9-7 0-14-6-21 2-10 11-7 30-2 46 5 16 10 32 16 46 4 9 8 20 17 20 11 0 12-16 14-27 3-8 5-14 11-14s8 6 11 14c2 11 3 27 14 27 9 0 13-11 17-20 6-14 11-30 16-46 5-16 8-35-2-46-7-8-14-2-21-2-9 0-17-9-33-9Z" fill="#fff"/></svg></div>
+    </div>
+  </section>
+  `;
+}
+
+function computeGlobalProgress(){
+  const totalItems = allCourses().length + allQuizzes().length + allExercises().length;
+  const done = STATE.completedCourses.length + Object.keys(STATE.quizResults).length + Object.keys(STATE.exerciseResults).length;
+  if(totalItems===0) return 0;
+  return Math.min(100, Math.round(done/totalItems*100)) || (done>0?8:0);
+}
+function donutSvg(pct){
+  const r=54, c=2*Math.PI*r, off=c*(1-pct/100);
+  return `<svg viewBox="0 0 140 140" width="140" height="140">
+    <circle cx="70" cy="70" r="${r}" fill="none" stroke="var(--gray-100)" stroke-width="14"/>
+    <circle cx="70" cy="70" r="${r}" fill="none" stroke="url(#gradDonut)" stroke-width="14" stroke-linecap="round"
+      stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 70 70)"/>
+    <defs><linearGradient id="gradDonut" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F4E96"/><stop offset="100%" stop-color="#18BEC9"/></linearGradient></defs>
+    <text x="70" y="76" text-anchor="middle" font-family="Sora" font-size="26" font-weight="700" fill="var(--blue-dark)">${pct}%</text>
+  </svg>`;
+}
+function recentActivityRows(n){
+  const rows = [];
+  Object.keys(STATE.quizResults).forEach(id=>{ const q=allQuizzes().find(x=>x.id===id); if(q) rows.push({ic:I.quiz,t:'Quiz '+q.matiere,s:'Score : '+STATE.quizResults[id]+'%'}); });
+  STATE.completedCourses.forEach(id=>{ const c=allCourses().find(x=>x.id===id); if(c) rows.push({ic:I.book,t:c.title,s:'Cours terminé'}); });
+  Object.keys(STATE.exerciseResults).forEach(id=>{ const e=allExercises().find(x=>x.id===id); if(e) rows.push({ic:I.pencil,t:e.title,s:'Exercice — '+STATE.exerciseResults[id]+'%'}); });
+  if(rows.length===0) return `<div style="text-align:center; padding:28px 10px; color:var(--gray-500); font-size:13.5px;">Aucune activité pour le moment.<br>Commencez un cours ou un quiz !</div>`;
+  return rows.slice(0,n).map(r=>`<div class="activity-row"><div class="activity-ic">${r.ic}</div><div><div class="at">${r.t}</div><div class="as">${r.s}</div></div></div>`).join('');
+}
+
+/* ---- COURS list ---- */
+function viewCoursList(q){
+  const classe = q.classe || '';
+  const matiere = q.matiere || '';
+  let items = allCourses().filter(c=> (!classe||c.classe===classe) && (!matiere||c.matiere===matiere));
+  return `
+  <section class="section">
+    <div class="eyebrow-row"><span class="pill cyan">${items.length} cours</span></div>
+    <h1 class="section-title" style="margin-bottom:22px;">Cours de prothèse dentaire</h1>
+    <div class="filter-panel">
+      <div class="filter-group-label">Classe</div>
+      <div class="filter-bar">
+        <button class="chip ${!classe?'active':''}" onclick="nav('/cours${matiere?'?matiere='+encodeURIComponent(matiere):''}')">Toutes</button>
+        ${CLASSES.map(c=>`<button class="chip ${classe===c?'active':''}" onclick="nav('/cours?classe=${encodeURIComponent(c)}${matiere?'&matiere='+encodeURIComponent(matiere):''}')">${c}</button>`).join('')}
+      </div>
+      <div class="filter-group-label">Matière / thème</div>
+      <div class="filter-bar">
+        <button class="chip ${!matiere?'active':''}" onclick="nav('/cours${classe?'?classe='+encodeURIComponent(classe):''}')">Toutes</button>
+        ${MATIERES.map(m=>`<button class="chip ${matiere===m?'active':''}" onclick="nav('/cours?${classe?'classe='+encodeURIComponent(classe)+'&':''}matiere=${encodeURIComponent(m)}')">${m}</button>`).join('')}
+      </div>
+    </div>
+    ${items.length? `<div class="grid cols-3">${items.map(courseCard).join('')}</div>` : emptyState('Aucun cours ne correspond à ces filtres pour le moment.')}
+  </section>`;
+}
+function emptyState(msg){
+  return `<div class="empty-state"><div class="es-ic">${I.search}</div><p>${msg}</p></div>`;
+}
+
+/* ---- COURS detail ---- */
+function lessonBlockHtml(b){
+  if(b.h) return `<h3>${b.h}</h3>`;
+  if(b.p) return `<p>${b.p}</p>`;
+  if(b.retenir) return `<div class="callout retenir"><div class="co-ic">${I.check}</div><div><strong>À retenir</strong><p>${b.retenir}</p></div></div>`;
+  if(b.vocab) return `<div class="callout vocab"><div class="co-ic">${I.book}</div><div><strong>Vocabulaire professionnel</strong><ul class="vocab-list">${b.vocab.map(v=>`<li><b>${v[0]}</b> — ${v[1]}</li>`).join('')}</ul></div></div>`;
+  if(b.diagram) return `<div class="diagram-box">${schemaSvg()}${b.diagram}</div>`;
+  if(b.table) return `<table class="lesson-table"><thead><tr>${b.table.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${b.table.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  return '';
+}
+function schemaSvg(){
+  return `<svg viewBox="0 0 300 100" style="width:100%;max-width:280px;"><rect x="4" y="4" width="292" height="92" rx="12" fill="none" stroke="var(--gray-300)" stroke-width="1.5"/>
+  <circle cx="60" cy="50" r="22" fill="var(--blue-pale)" stroke="var(--blue-100)"/>
+  <circle cx="150" cy="50" r="22" fill="rgba(24,190,201,.15)" stroke="var(--cyan)"/>
+  <circle cx="240" cy="50" r="22" fill="var(--blue-pale)" stroke="var(--blue-100)"/>
+  <path d="M85 50h40M175 50h40" stroke="var(--gray-300)" stroke-width="2" marker-end="url(#arr)"/>
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M0 0 6 4 0 8Z" fill="var(--gray-300)"/></marker></defs>
+  </svg>`;
+}
+function viewCourseDetail(id){
+  const c = allCourses().find(x=>x.id===id);
+  if(!c) return emptyState('Ce cours est introuvable.');
+  const done = STATE.completedCourses.includes(c.id);
+  const idx = allCourses().findIndex(x=>x.id===c.id);
+  const next = allCourses()[idx+1];
+  return `
+  <section class="section">
+    <a href="#/cours" class="back-link" onclick="nav('/cours');return false;">${I.arrowL} Retour aux cours</a>
+    <div class="two-col">
+      <div>
+        <div class="lesson-head">
+          <div class="cc-meta" style="margin-bottom:6px;"><span class="pill" style="background:rgba(255,255,255,.18);color:#fff;">${c.classe}</span><span class="pill" style="background:rgba(255,255,255,.18);color:#fff;">${c.matiere}</span></div>
+          <h1>${c.title}</h1>
+          <div class="lesson-meta">
+            <span class="lm">${I.clock} ${c.duree} min</span>
+            <span class="lm">${I.chart} ${c.difficulty}</span>
+            <span class="lm">${I.book} ${c.chapitre}</span>
+          </div>
+        </div>
+        <div class="lesson-body">
+          ${c.body.map(lessonBlockHtml).join('')}
+          <div class="lesson-foot">
+            <button class="done-check" onclick="toggleCourseDone('${c.id}')">
+              <span style="width:22px;height:22px;border-radius:6px;border:2px solid ${done?'var(--cyan-dark)':'var(--gray-300)'};background:${done?'var(--cyan-dark)':'#fff'};display:flex;align-items:center;justify-content:center;color:#fff;">${done?I.check:''}</span>
+              ${done?'Cours terminé':'Marquer comme terminé'}
+            </button>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn btn-outline" onclick="nav('/exercices')">Faire les exercices</button>
+              <button class="btn btn-outline" onclick="nav('/quiz')">Faire le quiz</button>
+              ${next?`<button class="btn btn-primary" onclick="nav('/cours/${next.id}')">Cours suivant ${I.arrowR}</button>`:''}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card side-card">
+          <h4>À propos de ce cours</h4>
+          <p style="font-size:13.5px; color:var(--gray-500); line-height:1.6; margin-bottom:14px;">${c.desc}</p>
+          <button class="btn btn-outline btn-block" onclick="toggleFav('courses','${c.id}',event)">${isFav('courses',c.id)?I.star+' Retirer des favoris':I.starOutline+' Ajouter aux favoris'}</button>
+        </div>
+        <div class="card side-card" style="margin-top:18px;">
+          <h4>Dans la même matière</h4>
+          ${allCourses().filter(x=>x.matiere===c.matiere && x.id!==c.id).slice(0,3).map(x=>`<a href="#/cours/${x.id}" onclick="nav('/cours/${x.id}');return false;" style="display:block; padding:9px 0; border-bottom:1px solid var(--gray-100); font-size:13.5px; font-weight:600; color:var(--blue-dark);">${x.title}</a>`).join('') || '<p style="font-size:13px;color:var(--gray-500);">Aucun autre cours pour l\'instant.</p>'}
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+function toggleCourseDone(id){
+  const i = STATE.completedCourses.indexOf(id);
+  if(i>-1){ STATE.completedCourses.splice(i,1); } else { STATE.completedCourses.push(id); toast('Cours marqué comme terminé 🎉'); checkBadges(); }
+  saveState(); render();
+}
+
+/* ---- VIDEOS ---- */
+function viewVideoList(q){
+  const classe = q.classe||''; const theme = q.theme||'';
+  const themes = [...new Set(VIDEOS.map(v=>v.theme))];
+  let items = allVideos().filter(v=>(!classe||v.classe===classe)&&(!theme||v.theme===theme));
+  return `<section class="section">
+    <h1 class="section-title" style="margin-bottom:22px;">Bibliothèque de vidéos pédagogiques</h1>
+    <div class="filter-panel">
+      <div class="filter-group-label">Classe</div>
+      <div class="filter-bar">
+        <button class="chip ${!classe?'active':''}" onclick="nav('/videos${theme?'?theme='+encodeURIComponent(theme):''}')">Toutes</button>
+        ${CLASSES.map(c=>`<button class="chip ${classe===c?'active':''}" onclick="nav('/videos?classe=${encodeURIComponent(c)}${theme?'&theme='+encodeURIComponent(theme):''}')">${c}</button>`).join('')}
+      </div>
+      <div class="filter-group-label">Thème</div>
+      <div class="filter-bar">
+        <button class="chip ${!theme?'active':''}" onclick="nav('/videos${classe?'?classe='+encodeURIComponent(classe):''}')">Tous</button>
+        ${themes.map(t=>`<button class="chip ${theme===t?'active':''}" onclick="nav('/videos?${classe?'classe='+encodeURIComponent(classe)+'&':''}theme=${encodeURIComponent(t)}')">${t}</button>`).join('')}
+      </div>
+    </div>
+    ${items.length?`<div class="grid cols-3">${items.map(videoCard).join('')}</div>`:emptyState('Aucune vidéo pour ces filtres.')}
+  </section>`;
+}
+function viewVideoDetail(id){
+  const v = allVideos().find(x=>x.id===id);
+  if(!v) return emptyState('Cette vidéo est introuvable.');
+  const watched = STATE.watchedVideos.includes(v.id);
+  const related = allExercises().filter(e=>e.matiere && v.theme && e.matiere.toLowerCase().includes(v.theme.toLowerCase().split(' ')[0])).slice(0,2);
+  return `<section class="section">
+    <a href="#/videos" class="back-link" onclick="nav('/videos');return false;">Retour aux vidéos</a>
+    <div class="two-col">
+      <div>
+        <div class="video-player" onclick="markWatched('${v.id}')">
+          <div class="dot-pattern" style="position:absolute;inset:0;"></div>
+          <div class="play-btn">${I.play}</div>
+        </div>
+        <div class="cc-meta" style="margin:16px 0 6px;"><span class="pill">${v.classe}</span><span class="pill gray">${v.theme}</span><span class="pill cyan">${v.duree}</span></div>
+        <h1 style="font-size:24px;">${v.title}</h1>
+        <p style="color:var(--gray-500); margin-top:10px; font-size:14.5px;">${v.desc}</p>
+
+        <div class="card" style="padding:24px; margin-top:24px;">
+          <h4 style="font-size:15px; margin-bottom:10px;">Résumé</h4>
+          <p style="font-size:14px; color:var(--gray-700); line-height:1.7;">${v.resume}</p>
+          <h4 style="font-size:15px; margin:20px 0 10px;">Points importants</h4>
+          <ul style="display:flex; flex-direction:column; gap:8px;">${v.points.map(p=>`<li style="display:flex; gap:10px; font-size:14px; color:var(--gray-700);">${I.check}<span>${p}</span></li>`).join('')}</ul>
+          <h4 style="font-size:15px; margin:20px 0 10px;">Vocabulaire</h4>
+          <div class="tag-row">${v.vocab.map(t=>`<span class="pill gray">${t}</span>`).join('')}</div>
+        </div>
+      </div>
+      <div>
+        <div class="card side-card">
+          <button class="btn btn-outline btn-block" onclick="toggleFav('videos','${v.id}',event)">${isFav('videos',v.id)?I.star+' Retirer des favoris':I.starOutline+' Ajouter aux favoris'}</button>
+          <div style="height:10px;"></div>
+          <button class="btn btn-primary btn-block" onclick="markWatched('${v.id}')">${watched?I.check+' Vidéo regardée':'Marquer comme regardée'}</button>
+        </div>
+        <div class="card side-card" style="margin-top:18px;">
+          <h4>Exercices liés</h4>
+          ${related.length? related.map(e=>`<a href="#/exercices/${e.id}" onclick="nav('/exercices/${e.id}');return false;" style="display:block; padding:9px 0; border-bottom:1px solid var(--gray-100); font-size:13.5px; font-weight:600; color:var(--blue-dark);">${e.title}</a>`).join('') : `<a href="#/exercices" onclick="nav('/exercices');return false;" style="font-size:13.5px; font-weight:600; color:var(--blue-strong);">Voir tous les exercices ${I.arrowR}</a>`}
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+function markWatched(id){
+  if(!STATE.watchedVideos.includes(id)){ STATE.watchedVideos.push(id); saveState(); toast('Vidéo marquée comme regardée'); checkBadges(); render(); }
+}
+
+/* ---- DOCUMENTS ---- */
+function viewDocuments(q){
+  const search = (q.q||'').toLowerCase();
+  let items = allDocuments().filter(d=> !search || (d.title+d.desc+d.matiere).toLowerCase().includes(search));
+  return `<section class="section">
+    <h1 class="section-title" style="margin-bottom:18px;">Bibliothèque de documents</h1>
+    <div class="filter-panel">
+      <div class="search-mini">${I.search}<input type="text" placeholder="Rechercher un document…" value="${q.q||''}" oninput="nav('/documents?q='+encodeURIComponent(this.value))"></div>
+    </div>
+    ${items.length?`<div style="display:flex; flex-direction:column; gap:14px;">${items.map(docCard).join('')}</div>`:emptyState('Aucun document trouvé.')}
+  </section>`;
+}
+
+/* ---- EXERCICES ---- */
+const EX_TYPES = [
+  {t:'QCM', d:'Plusieurs réponses possibles.', ic:I.quiz},
+  {t:'Vrai / Faux', d:'Une affirmation à valider ou invalider.', ic:I.check},
+  {t:'Texte à trous', d:'Complétez les mots manquants.', ic:I.pencil},
+  {t:'Associer', d:'Reliez termes, images ou définitions.', ic:I.link}
+];
+function viewExercisesList(q){
+  const classe=q.classe||''; const matiere=q.matiere||'';
+  let items = allExercises().filter(e=>(!classe||e.classe===classe)&&(!matiere||e.matiere===matiere));
+  return `<section class="section">
+    <h1 class="section-title" style="margin-bottom:8px;">Exercices interactifs</h1>
+    <p class="section-sub" style="margin-bottom:28px;">Entraînez-vous avec des QCM, du vrai/faux, des textes à trous et des exercices d'association.</p>
+    <div class="grid cols-4" style="margin-bottom:32px;">
+      ${EX_TYPES.map(t=>`<div class="card ex-type-card"><div class="et-ic">${t.ic}</div><h4 style="font-size:14.5px;">${t.t}</h4><p style="font-size:12.5px;color:var(--gray-500);">${t.d}</p></div>`).join('')}
+    </div>
+    <div class="filter-panel">
+      <div class="filter-group-label">Classe</div>
+      <div class="filter-bar">
+        <button class="chip ${!classe?'active':''}" onclick="nav('/exercices${matiere?'?matiere='+encodeURIComponent(matiere):''}')">Toutes</button>
+        ${CLASSES.map(c=>`<button class="chip ${classe===c?'active':''}" onclick="nav('/exercices?classe=${encodeURIComponent(c)}${matiere?'&matiere='+encodeURIComponent(matiere):''}')">${c}</button>`).join('')}
+      </div>
+    </div>
+    ${items.length?`<div class="grid cols-3">${items.map(exCard).join('')}</div>`:emptyState('Aucun exercice pour ces filtres.')}
+  </section>`;
+}
+let EX_RUN = null;
+function viewExerciseRunner(id){
+  const ex = allExercises().find(x=>x.id===id);
+  if(!ex) return emptyState('Exercice introuvable.');
+  if(!EX_RUN || EX_RUN.id!==id) EX_RUN = {id, i:0, answers:[], checked:false, selected:null, blanks:[], selPair:null, matched:[]};
+  const total = ex.questions ? ex.questions.length : 1;
+  const qn = EX_RUN.i;
+  return `<section class="section ex-runner">
+    <a href="#/exercices" class="back-link" onclick="nav('/exercices');return false;">Retour aux exercices</a>
+    <div class="ex-progress-row"><span style="font-size:13px;font-weight:700;color:var(--gray-500);">${qn+1} / ${total}</span><div class="pbar"><span style="width:${((qn+1)/total*100)}%"></span></div></div>
+    <div class="card" style="padding:30px;">
+      <div class="cc-meta" style="margin-bottom:14px;"><span class="pill">${ex.classe}</span><span class="pill gray">${ex.matiere}</span></div>
+      ${renderExerciseQuestion(ex, qn)}
+    </div>
+  </section>`;
+}
+function renderExerciseQuestion(ex, qn){
+  if(ex.type==='qcm' || ex.type==='vf'){
+    const q = ex.questions[qn];
+    const sel = EX_RUN.selected;
+    const checked = EX_RUN.checked;
+    return `<h3 style="font-size:18px; margin-bottom:6px;">${q.q}</h3>
+    <div class="opt-list">
+      ${q.options.map((o,i)=>{
+        let cls='opt-item';
+        if(checked){ if(i===q.correct) cls+=' correct'; else if(i===sel) cls+=' wrong'; }
+        else if(sel===i) cls+=' selected';
+        return `<button class="${cls}" ${checked?'disabled':''} onclick="selectOption(${i})"><span class="opt-radio">${checked&&i===q.correct?I.check:(checked&&i===sel?I.x:'')}</span>${o}</button>`;
+      }).join('')}
+    </div>
+    ${checked?`<div class="feedback-box ${sel===q.correct?'ok':'ko'}"><div class="fb-ic">${sel===q.correct?I.check:I.x}</div><div><strong style="display:block;font-size:13.5px;margin-bottom:3px;">${sel===q.correct?'Bonne réponse !':'Pas tout à fait.'}</strong><p style="font-size:13.5px;color:var(--gray-700);">${q.explain}</p></div></div>`:''}
+    ${exNav(ex, qn, checked, sel!==null)}
+    `;
+  }
+  if(ex.type==='trou'){
+    const q = ex.questions[qn];
+    const checked = EX_RUN.checked;
+    const parts = q.q.split('___');
+    let out = parts[0];
+    for(let i=1;i<parts.length;i++){
+      const val = EX_RUN.blanks[i-1]||'';
+      const correctVal = q.blanks[i-1];
+      const ok = checked && val.trim().toLowerCase()===correctVal.toLowerCase();
+      const bad = checked && !ok;
+      out += `<input class="blank-input" style="${ok?'border-color:var(--cyan-dark);background:rgba(24,190,201,.1);':''}${bad?'border-color:#E15361;background:rgba(225,83,97,.08);':''}" ${checked?'disabled':''} value="${val}" oninput="EX_RUN.blanks[${i-1}]=this.value" placeholder="…">` + parts[i];
+    }
+    return `<h3 style="font-size:18px; margin-bottom:18px;">Complétez le texte</h3>
+    <p style="font-size:16px; line-height:2.2; color:var(--gray-700);">${out}</p>
+    ${checked?`<div class="feedback-box ok"><div class="fb-ic">${I.check}</div><div><strong style="display:block;font-size:13.5px;margin-bottom:3px;">Réponses attendues : ${q.blanks.join(', ')}</strong><p style="font-size:13.5px;color:var(--gray-700);">${q.explain}</p></div></div>`:''}
+    ${exNav(ex, qn, checked, EX_RUN.blanks.filter(Boolean).length>0)}
+    `;
+  }
+  if(ex.type==='assoc'){
+    const pairs = ex.pairs;
+    const checked = EX_RUN.checked;
+    const left = pairs.map((p,i)=>({label:p[0], i}));
+    const right = pairs.map((p,i)=>({label:p[1], i})).sort((a,b)=> (a.label+a.i).localeCompare(b.label+b.i));
+    return `<h3 style="font-size:18px; margin-bottom:6px;">Associez chaque terme à sa définition</h3>
+    <p style="font-size:13px;color:var(--gray-500); margin-bottom:6px;">Sélectionnez un terme puis sa définition correspondante.</p>
+    <div class="assoc-grid">
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        ${left.map(l=>`<div class="assoc-item ${EX_RUN.matched.includes(l.i)?'matched':(EX_RUN.selPair&&EX_RUN.selPair.side==='l'&&EX_RUN.selPair.i===l.i?'sel':'')}" onclick="pickAssoc('l',${l.i})">${l.label}</div>`).join('')}
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        ${right.map(r=>`<div class="assoc-item ${EX_RUN.matched.includes(r.i)?'matched':(EX_RUN.selPair&&EX_RUN.selPair.side==='r'&&EX_RUN.selPair.i===r.i?'sel':'')}" onclick="pickAssoc('r',${r.i})">${r.label}</div>`).join('')}
+      </div>
+    </div>
+    ${EX_RUN.matched.length===pairs.length?`<div class="feedback-box ok" style="margin-top:20px;"><div class="fb-ic">${I.check}</div><div><strong style="display:block;font-size:13.5px;">Bravo, toutes les paires sont correctes !</strong></div></div>`:''}
+    ${exNav(ex, qn, EX_RUN.matched.length===pairs.length, true, true)}
+    `;
+  }
+  return '';
+}
+function exNav(ex, qn, checked, canValidate, isLast){
+  const total = ex.questions ? ex.questions.length : 1;
+  const lastQuestion = qn>=total-1 || isLast;
+  return `<div class="ex-nav">
+    <button class="btn btn-ghost" onclick="restartExercise()">Recommencer</button>
+    ${!checked ? `<button class="btn btn-primary" ${canValidate?'':'disabled'} onclick="validateExercise('${ex.id}')">Valider</button>`
+      : (lastQuestion ? `<button class="btn btn-primary" onclick="finishExercise('${ex.id}')">Voir le résultat ${I.arrowR}</button>` : `<button class="btn btn-primary" onclick="nextExerciseQuestion('${ex.id}')">Question suivante ${I.arrowR}</button>`)}
+  </div>`;
+}
+function selectOption(i){ if(EX_RUN.checked) return; EX_RUN.selected=i; render(); }
+function pickAssoc(side,i){
+  if(EX_RUN.matched.includes(i) && false) return;
+  if(!EX_RUN.selPair){ EX_RUN.selPair={side,i}; render(); return; }
+  if(EX_RUN.selPair.side===side){ EX_RUN.selPair={side,i}; render(); return; }
+  if(EX_RUN.selPair.i===i){ EX_RUN.matched.push(i); EX_RUN.selPair=null; render(); return; }
+  EX_RUN.selPair=null; render();
+}
+function validateExercise(id){
+  const ex = allExercises().find(x=>x.id===id);
+  EX_RUN.checked = true;
+  EX_RUN.answers[EX_RUN.i] = ex.type==='trou' ? true : EX_RUN.selected;
+  render();
+}
+function nextExerciseQuestion(id){
+  EX_RUN.i++; EX_RUN.checked=false; EX_RUN.selected=null; EX_RUN.blanks=[];
+  render();
+}
+function restartExercise(){ const id=EX_RUN.id; EX_RUN={id,i:0,answers:[],checked:false,selected:null,blanks:[],selPair:null,matched:[]}; render(); }
+function finishExercise(id){
+  const ex = allExercises().find(x=>x.id===id);
+  let score = 100;
+  if(ex.type==='qcm'||ex.type==='vf'){
+    let correct=0;
+    ex.questions.forEach((q,i)=>{ if(EX_RUN.answers[i]===q.correct) correct++; });
+    score = Math.round(correct/ex.questions.length*100);
+  }
+  STATE.exerciseResults[id] = score;
+  saveState(); checkBadges();
+  EX_RUN=null;
+  document.getElementById('mainWrap').innerHTML = exerciseResultHtml(ex, score);
+}
+function exerciseResultHtml(ex, score){
+  return `<section class="section ex-runner">
+    <div class="card result-summary">
+      <div class="score-ring">${donutSvg(score)}</div>
+      <h2 style="margin-bottom:8px;">${score>=70?'Bien joué !':'Continuez à vous entraîner'}</h2>
+      <p style="color:var(--gray-500); font-size:14.5px; margin-bottom:26px;">Vous avez obtenu ${score}% de bonnes réponses à « ${ex.title} ».</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-outline" onclick="nav('/exercices/${ex.id}')">Recommencer</button>
+        <button class="btn btn-primary" onclick="nav('/exercices')">Autres exercices ${I.arrowR}</button>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ---- QUIZ ---- */
+function viewQuizList(q){
+  const classe=q.classe||''; const matiere=q.matiere||'';
+  let items = allQuizzes().filter(z=>(!classe||z.classe===classe)&&(!matiere||z.matiere===matiere));
+  return `<section class="section">
+    <h1 class="section-title" style="margin-bottom:8px;">Quiz &amp; évaluations</h1>
+    <p class="section-sub" style="margin-bottom:24px;">Testez vos connaissances par classe, matière et chapitre.</p>
+    <div class="filter-panel">
+      <div class="filter-group-label">Classe</div>
+      <div class="filter-bar">
+        <button class="chip ${!classe?'active':''}" onclick="nav('/quiz${matiere?'?matiere='+encodeURIComponent(matiere):''}')">Toutes</button>
+        ${CLASSES.map(c=>`<button class="chip ${classe===c?'active':''}" onclick="nav('/quiz?classe=${encodeURIComponent(c)}${matiere?'&matiere='+encodeURIComponent(matiere):''}')">${c}</button>`).join('')}
+      </div>
+    </div>
+    ${items.length?`<div class="grid cols-3">${items.map(quizCard).join('')}</div>`:emptyState('Aucun quiz pour ces filtres.')}
+  </section>`;
+}
+let QUIZ_RUN = null;
+function viewQuizDetail(id){
+  const qz = allQuizzes().find(x=>x.id===id);
+  if(!qz) return emptyState('Quiz introuvable.');
+  const best = STATE.quizResults[id];
+  return `<section class="section" style="max-width:640px; margin:0 auto;">
+    <a href="#/quiz" class="back-link" onclick="nav('/quiz');return false;">Retour aux quiz</a>
+    <div class="card" style="padding:36px; text-align:center;">
+      <div style="width:64px;height:64px;border-radius:18px;background:var(--blue-pale);color:var(--blue-strong);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;">${I.quiz}</div>
+      <div class="cc-meta" style="justify-content:center; margin-bottom:10px;"><span class="pill">${qz.classe}</span><span class="pill gray">${qz.matiere}</span></div>
+      <h1 style="font-size:23px;">${qz.title}</h1>
+      <p style="color:var(--gray-500); font-size:14px; margin-top:10px;">${qz.questions.length} questions · ${I.clock} Temps estimé : ${qz.duree} min</p>
+      ${best!==undefined?`<p style="margin-top:12px; font-weight:700; color:var(--cyan-dark);">${I.trophy} Meilleur score : ${best}%</p>`:''}
+      <button class="btn btn-primary" style="margin-top:24px;" onclick="startQuiz('${qz.id}')">Commencer ${I.arrowR}</button>
+    </div>
+  </section>`;
+}
+function startQuiz(id){ QUIZ_RUN={id,i:0,answers:[],selected:null,checked:false}; nav('/quiz/'+id+'/run'); }
+function viewQuizRun(id){
+  const qz = allQuizzes().find(x=>x.id===id);
+  if(!qz) return emptyState('Quiz introuvable.');
+  if(!QUIZ_RUN || QUIZ_RUN.id!==id) QUIZ_RUN={id,i:0,answers:[],selected:null,checked:false};
+  const q = qz.questions[QUIZ_RUN.i];
+  const sel = QUIZ_RUN.selected, checked = QUIZ_RUN.checked;
+  return `<section class="section ex-runner">
+    <div class="ex-progress-row"><span style="font-size:13px;font-weight:700;color:var(--gray-500);">${QUIZ_RUN.i+1} / ${qz.questions.length}</span><div class="pbar"><span style="width:${((QUIZ_RUN.i+1)/qz.questions.length*100)}%"></span></div></div>
+    <div class="card" style="padding:30px;">
+      <h3 style="font-size:18px; margin-bottom:16px;">${q.q}</h3>
+      <div class="opt-list">
+        ${q.options.map((o,i)=>{
+          let cls='opt-item';
+          if(checked){ if(i===q.correct) cls+=' correct'; else if(i===sel) cls+=' wrong'; }
+          else if(sel===i) cls+=' selected';
+          return `<button class="${cls}" ${checked?'disabled':''} onclick="quizSelect(${i})"><span class="opt-radio">${checked&&i===q.correct?I.check:(checked&&i===sel?I.x:'')}</span>${o}</button>`;
+        }).join('')}
+      </div>
+      ${checked?`<div class="feedback-box ${sel===q.correct?'ok':'ko'}"><div class="fb-ic">${sel===q.correct?I.check:I.x}</div><div><strong style="display:block;font-size:13.5px;margin-bottom:3px;">${sel===q.correct?'Bonne réponse !':'Pas tout à fait.'}</strong><p style="font-size:13.5px;color:var(--gray-700);">${q.explain}</p></div></div>`:''}
+      <div class="ex-nav">
+        <span></span>
+        ${!checked?`<button class="btn btn-primary" ${sel===null?'disabled':''} onclick="quizValidate('${qz.id}')">Valider</button>`
+          : (QUIZ_RUN.i<qz.questions.length-1 ? `<button class="btn btn-primary" onclick="quizNext('${qz.id}')">Question suivante ${I.arrowR}</button>` : `<button class="btn btn-primary" onclick="quizFinish('${qz.id}')">Voir mon score ${I.arrowR}</button>`)}
+      </div>
+    </div>
+  </section>`;
+}
+function quizSelect(i){ if(QUIZ_RUN.checked) return; QUIZ_RUN.selected=i; render(); }
+function quizValidate(id){ QUIZ_RUN.checked=true; QUIZ_RUN.answers[QUIZ_RUN.i]=QUIZ_RUN.selected; render(); }
+function quizNext(id){ QUIZ_RUN.i++; QUIZ_RUN.checked=false; QUIZ_RUN.selected=null; render(); }
+function quizFinish(id){
+  const qz = allQuizzes().find(x=>x.id===id);
+  let correct=0; qz.questions.forEach((q,i)=>{ if(QUIZ_RUN.answers[i]===q.correct) correct++; });
+  const score = Math.round(correct/qz.questions.length*100);
+  const prevBest = STATE.quizResults[id];
+  STATE.quizResults[id] = prevBest!==undefined ? Math.max(prevBest,score) : score;
+  saveState(); checkBadges();
+  document.getElementById('mainWrap').innerHTML = quizResultHtml(qz, score, correct);
+  QUIZ_RUN = null;
+}
+function quizResultHtml(qz, score, correct){
+  const advice = score>=80?'Excellent niveau, continuez ainsi !':score>=50?'Bon travail, revoyez les points manqués avant l\'évaluation.':'Reprenez le cours associé avant de retenter ce quiz.';
+  return `<section class="section ex-runner">
+    <div class="card result-summary">
+      <div class="score-ring">${donutSvg(score)}</div>
+      <h2>${correct} / ${qz.questions.length} bonnes réponses</h2>
+      <p style="color:var(--gray-500); font-size:14.5px; margin:10px 0 26px;">${advice}</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-outline" onclick="nav('/quiz/${qz.id}')">Recommencer</button>
+        <button class="btn btn-primary" onclick="nav('/quiz')">Autres quiz ${I.arrowR}</button>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ---- PROGRESSION ---- */
+const BADGES = [
+  {id:'b1', label:'Premier cours terminé', test:s=>s.completedCourses.length>=1},
+  {id:'b2', label:'10 exercices terminés', test:s=>Object.keys(s.exerciseResults).length>=10},
+  {id:'b3', label:'5 quiz réussis', test:s=>Object.values(s.quizResults).filter(v=>v>=50).length>=5},
+  {id:'b4', label:'7 jours de révision', test:s=>s.streak>=7},
+  {id:'b5', label:'100% dans un quiz', test:s=>Object.values(s.quizResults).some(v=>v===100)}
+];
+function checkBadges(){ /* recomputed live in render */ }
+const LEVELS = ['Débutant','Apprenti','Prothésiste en formation','Expert'];
+function computeLevelIndex(){
+  const pct = computeGlobalProgress();
+  if(pct>=75) return 3; if(pct>=45) return 2; if(pct>=15) return 1; return 0;
+}
+function viewProgression(){
+  const pct = computeGlobalProgress();
+  const levelIdx = computeLevelIndex();
+  const classProg = CLASSES.map(cl=>{
+    const cs = allCourses().filter(c=>c.classe===cl);
+    const done = cs.filter(c=>STATE.completedCourses.includes(c.id)).length;
+    const p = cs.length? Math.round(done/cs.length*100) : 0;
+    return {cl, p};
+  });
+  const weakSubjects = MATIERES.filter(m=>{
+    const cs = allCourses().filter(c=>c.matiere===m);
+    if(cs.length===0) return false;
+    const done = cs.filter(c=>STATE.completedCourses.includes(c.id)).length;
+    return done < cs.length;
+  }).slice(0,3);
+  return `<section class="section">
+    <h1 class="section-title">Bonjour ${STATE.profile.prenom} 👋</h1>
+    <p class="section-sub" style="margin-bottom:30px;">Voici ta progression</p>
+
+    <div class="grid cols-4" style="margin-bottom:30px;">
+      <div class="card stat-card"><div class="sic" style="background:var(--blue-strong);">${I.book}</div><div><div class="sval">${STATE.completedCourses.length}</div><div class="slabel">Cours terminés</div></div></div>
+      <div class="card stat-card"><div class="sic" style="background:var(--cyan-dark);">${I.video}</div><div><div class="sval">${STATE.watchedVideos.length}</div><div class="slabel">Vidéos regardées</div></div></div>
+      <div class="card stat-card"><div class="sic" style="background:#7C57D9;">${I.pencil}</div><div><div class="sval">${Object.keys(STATE.exerciseResults).length}</div><div class="slabel">Exercices réalisés</div></div></div>
+      <div class="card stat-card"><div class="sic" style="background:#E0895C;">${I.trophy}</div><div><div class="sval">${Object.keys(STATE.quizResults).length}</div><div class="slabel">Quiz terminés</div></div></div>
+    </div>
+    <div class="grid cols-2" style="margin-bottom:30px; align-items:stretch;">
+      <div class="card stat-card"><div class="sic" style="background:#F5A623;">${I.flame}</div><div><div class="sval">${STATE.streak} jours</div><div class="slabel">Série de révision</div></div></div>
+      <div class="card stat-card"><div class="sic" style="background:var(--blue-dark);">${I.chart}</div><div><div class="sval">${pct}%</div><div class="slabel">Progression générale</div></div></div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="card" style="padding:26px; margin-bottom:24px;">
+          <h4 style="font-size:15px; margin-bottom:16px;">Progression par classe</h4>
+          ${classProg.map(c=>`<div class="class-progress-row"><span class="cpr-label">${c.cl}</span><div class="pbar" style="flex:1;"><span style="width:${c.p}%"></span></div><span class="cpr-pct">${c.p}%</span></div>`).join('')}
+        </div>
+        <div class="card" style="padding:26px; margin-bottom:24px;">
+          <h4 style="font-size:15px; margin-bottom:6px;">Ton niveau</h4>
+          <div class="level-track">
+            ${LEVELS.map((l,i)=>`<div class="lt-step ${i<levelIdx?'done':''} ${i===levelIdx?'current':''}"><div class="lt-line"></div><div class="ltdot">${i<levelIdx?I.check:''}</div><span>${l}</span></div>`).join('')}
+          </div>
+        </div>
+        <div class="card" style="padding:26px;">
+          <h4 style="font-size:15px; margin-bottom:14px;">Activité récente</h4>
+          ${recentActivityRows(8)}
+        </div>
+      </div>
+      <div>
+        <div class="card side-card" style="margin-bottom:20px;">
+          <h4>À réviser prochainement</h4>
+          ${weakSubjects.length? weakSubjects.map(m=>`<div class="recommend-item"><span class="ric">⚠️</span><span style="font-size:13.5px; font-weight:600;">${m}</span></div>`).join('') : `<p style="font-size:13px;color:var(--gray-500);">Rien à signaler, continue comme ça !</p>`}
+        </div>
+        <div class="card side-card">
+          <h4>Mes récompenses</h4>
+          <div class="badge-grid">
+            ${BADGES.map(b=>{ const earned=b.test(STATE); return `<div class="badge-item ${earned?'earned':''}"><div class="bic">${earned?'🏅':'🔒'}</div><span>${b.label}</span></div>`; }).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ---- PROFIL ---- */
+function viewProfil(){
+  const favTotal = Object.values(STATE.favorites).reduce((a,b)=>a+b.length,0);
+
+  if(!IDENTITY.signedIn){
+    return `<section class="section" style="max-width:560px;">
+      <h1 class="section-title" style="margin-bottom:16px;">Mon profil</h1>
+      <div class="card" style="padding:32px; text-align:center;">
+        <p style="color:var(--gray-500); margin-bottom:18px;">Connecte-toi avec ton compte Google pour créer ton profil et sauvegarder ta progression sur tous tes appareils.</p>
+        <button class="btn btn-primary" onclick="signInGoogle()" style="background:#fff;color:#3c4043;border:1.5px solid var(--gray-300);display:inline-flex;align-items:center;gap:10px;margin:0 auto;">${I.google} Se connecter avec Google</button>
+      </div>
+    </section>`;
+  }
+
+  return `<section class="section" style="max-width:720px;">
+    <h1 class="section-title" style="margin-bottom:22px;">Mon profil</h1>
+    ${STATE.needsOnboarding ? `<div class="card" style="padding:18px 22px;margin-bottom:20px;border:1.5px solid var(--blue-100);background:var(--blue-pale);">
+      <b>Bienvenue${IDENTITY.name?', '+IDENTITY.name.split(' ')[0]:''} !</b> Choisis ta classe ci-dessous pour démarrer — ta progression sera ensuite sauvegardée automatiquement sur ton compte.
+    </div>` : ''}
+    <div class="card profile-hero" style="margin-bottom:24px;">
+      <div class="avatar" style="${IDENTITY.photoURL?'padding:0;overflow:hidden;background:none;':''}">
+        ${IDENTITY.photoURL ? `<img src="${IDENTITY.photoURL}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">` : (IDENTITY.name||'?')[0]}
+      </div>
+      <div>
+        <h3 style="font-size:19px;">${IDENTITY.name||'Élève'}</h3>
+        <p style="color:var(--gray-500); font-size:13.5px; margin-top:4px;">${IDENTITY.email} · Classe : ${STATE.profile.classe}${IDENTITY.isAdmin?' · Administrateur':''}</p>
+        <p style="color:var(--cyan-dark); font-size:12.5px; margin-top:2px; font-weight:700;">✅ Compte Google connecté — progression synchronisée</p>
+      </div>
+      <button class="btn btn-outline btn-sm" style="margin-left:auto;" onclick="signOutUser()">Se déconnecter</button>
+    </div>
+    <div class="grid cols-4" style="margin-bottom:24px;">
+      <div class="card stat-card" style="padding:16px;"><div class="sic" style="background:var(--blue-strong); width:40px;height:40px;">${I.book}</div><div><div class="sval" style="font-size:19px;">${STATE.completedCourses.length}</div><div class="slabel">Cours</div></div></div>
+      <div class="card stat-card" style="padding:16px;"><div class="sic" style="background:var(--cyan-dark); width:40px;height:40px;">${I.trophy}</div><div><div class="sval" style="font-size:19px;">${Object.keys(STATE.quizResults).length}</div><div class="slabel">Quiz</div></div></div>
+      <div class="card stat-card" style="padding:16px;"><div class="sic" style="background:#7C57D9; width:40px;height:40px;">${I.pencil}</div><div><div class="sval" style="font-size:19px;">${Object.keys(STATE.exerciseResults).length}</div><div class="slabel">Exercices</div></div></div>
+      <div class="card stat-card" style="padding:16px;"><div class="sic" style="background:#F5A623; width:40px;height:40px;">${I.starOutline}</div><div><div class="sval" style="font-size:19px;">${favTotal}</div><div class="slabel">Favoris</div></div></div>
+    </div>
+    <div class="card" style="padding:26px;">
+      <h4 style="font-size:15px; margin-bottom:16px;">Informations personnelles</h4>
+      <div class="form-row"><label>Classe</label><select id="pfClasse">${CLASSES.map(c=>`<option ${STATE.profile.classe===c?'selected':''}>${c}</option>`).join('')}</select></div>
+      <button class="btn btn-primary" onclick="saveProfile()">Enregistrer</button>
+      <p style="font-size:12px;color:var(--gray-500);margin-top:10px;">Ton nom, ta photo et ton adresse e-mail proviennent de ton compte Google — ils ne peuvent pas être modifiés ici.</p>
+    </div>
+  </section>`;
+}
+function saveProfile(){
+  STATE.profile.classe = document.getElementById('pfClasse').value;
+  STATE.needsOnboarding = false;
+  saveState(); toast('Profil mis à jour'); render();
+}
+
+/* ---- FAVORIS ---- */
+function viewFavoris(){
+  const fc = allCourses().filter(c=>isFav('courses',c.id));
+  const fv = allVideos().filter(v=>isFav('videos',v.id));
+  const fd = allDocuments().filter(d=>isFav('documents',d.id));
+  const fq = allQuizzes().filter(q=>isFav('quizzes',q.id));
+  const total = fc.length+fv.length+fd.length+fq.length;
+  return `<section class="section">
+    <h1 class="section-title" style="margin-bottom:22px;">Mes favoris</h1>
+    ${total===0? emptyState('Vous n\'avez encore ajouté aucun favori. Cliquez sur l\'étoile ⭐ d\'un contenu pour le retrouver ici.') : ''}
+    ${fc.length?`<h3 style="font-size:16px; margin:24px 0 14px;">Cours favoris</h3><div class="grid cols-3">${fc.map(courseCard).join('')}</div>`:''}
+    ${fv.length?`<h3 style="font-size:16px; margin:24px 0 14px;">Vidéos favorites</h3><div class="grid cols-3">${fv.map(videoCard).join('')}</div>`:''}
+    ${fd.length?`<h3 style="font-size:16px; margin:24px 0 14px;">Documents favoris</h3><div style="display:flex; flex-direction:column; gap:14px;">${fd.map(docCard).join('')}</div>`:''}
+    ${fq.length?`<h3 style="font-size:16px; margin:24px 0 14px;">Quiz favoris</h3><div class="grid cols-3">${fq.map(quizCard).join('')}</div>`:''}
+  </section>`;
+}
+
+/* ============================================================
+   ADMIN
+   ============================================================ */
+let _adminUserCount = null;
+function fetchAdminUserCount(){
+  if(!FIREBASE_OK || _adminUserCount!==null) return;
+  _adminUserCount = '…';
+  fbDB.collection('users').get().then(snap=>{ _adminUserCount = snap.size; render(); })
+    .catch(e=>{ console.warn('Comptage des élèves impossible', e); _adminUserCount = '—'; });
+}
+function viewAdmin(){
+  if(!IDENTITY.signedIn){
+    return `<section class="section">${emptyState("Connecte-toi avec Google pour accéder à l'espace administrateur.")}</section>`;
+  }
+  if(!IDENTITY.isAdmin){
+    return `<section class="section">${emptyState("Cette page est réservée aux enseignants. Ton compte ("+IDENTITY.email+") n'a pas les droits administrateur.")}</section>`;
+  }
+  fetchAdminUserCount();
+  return `<section class="section">
+    <div class="section-head">
+      <div><h1 class="section-title">Espace administrateur</h1><p class="section-sub">Ajoutez et gérez le contenu pédagogique de la plateforme. Administrateur connecté : ${IDENTITY.name} (${IDENTITY.email}).</p></div>
+    </div>
+    <div class="grid cols-4" style="margin-bottom:30px;">
+      <div class="card stat-card"><div class="sic" style="background:var(--blue-strong);">${I.user}</div><div><div class="sval">${_adminUserCount===null?'…':_adminUserCount}</div><div class="slabel">Élèves inscrits</div></div></div>
+      <div class="card stat-card"><div class="sic" style="background:var(--cyan-dark);">${I.book}</div><div><div class="sval">${allCourses().length}</div><div class="slabel">Cours publiés</div></div></div>
+      <div class="card stat-card"><div class="sic" style="background:#7C57D9;">${I.quiz}</div><div><div class="sval">${allQuizzes().length}</div><div class="slabel">Quiz publiés</div></div></div>
+      <div class="card stat-card"><div class="sic" style="background:#E0895C;">${I.chart}</div><div><div class="sval">${allExercises().length}</div><div class="slabel">Exercices publiés</div></div></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="chip active" data-tab="cours" onclick="setAdminTab('cours',this)">Cours</button>
+      <button class="chip" data-tab="videos" onclick="setAdminTab('videos',this)">Vidéos</button>
+      <button class="chip" data-tab="documents" onclick="setAdminTab('documents',this)">Documents</button>
+      <button class="chip" data-tab="quiz" onclick="setAdminTab('quiz',this)">Quiz</button>
+      <button class="chip" data-tab="exercices" onclick="setAdminTab('exercices',this)">Exercices</button>
+    </div>
+
+    <div class="admin-panel active" id="admin-cours">${adminCoursePanel()}</div>
+    <div class="admin-panel" id="admin-videos">${adminVideoPanel()}</div>
+    <div class="admin-panel" id="admin-documents">${adminDocPanel()}</div>
+    <div class="admin-panel" id="admin-quiz">${adminQuizPanel()}</div>
+    <div class="admin-panel" id="admin-exercices">${adminExercisePanel()}</div>
+  </section>`;
+}
+function setAdminTab(tab, btn){
+  document.querySelectorAll('.admin-tabs .chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('admin-'+tab).classList.add('active');
+}
+function adminCoursePanel(){
+  return `<div class="card" style="padding:24px; margin-bottom:22px;">
+    <h4 style="font-size:15px; margin-bottom:16px;">Ajouter un cours</h4>
+    <div class="admin-form-grid">
+      <div class="form-row"><label>Titre du cours</label><input id="ac_title" placeholder="Ex : Les alliages métalliques"></div>
+      <div class="form-row"><label>Chapitre</label><input id="ac_chap" placeholder="Ex : Les métaux en prothèse"></div>
+      <div class="form-row"><label>Classe</label><select id="ac_classe">${CLASSES.map(c=>`<option>${c}</option>`).join('')}</select></div>
+      <div class="form-row"><label>Matière</label><select id="ac_matiere">${MATIERES.map(m=>`<option>${m}</option>`).join('')}</select></div>
+      <div class="form-row"><label>Niveau de difficulté</label><select id="ac_diff"><option>Facile</option><option>Intermédiaire</option><option>Avancé</option></select></div>
+      <div class="form-row"><label>Durée estimée (min)</label><input id="ac_duree" type="number" value="20"></div>
+    </div>
+    <div class="form-row"><label>Description courte</label><textarea id="ac_desc" rows="2" placeholder="Description affichée sur la carte du cours"></textarea></div>
+    <div class="form-row"><label>Contenu du cours</label><textarea id="ac_body" rows="4" placeholder="Texte principal du cours"></textarea></div>
+    <button class="btn btn-primary" onclick="addCourse()">${I.plus} Ajouter le cours</button>
+  </div>
+  <table class="admin-table"><thead><tr><th>Titre</th><th>Classe</th><th>Matière</th><th>Difficulté</th><th></th></tr></thead>
+  <tbody>${allCourses().map(c=>`<tr><td>${c.title}</td><td>${c.classe}</td><td>${c.matiere}</td><td>${c.difficulty}</td>
+    <td class="row-actions"><button class="icon-mini" onclick="nav('/cours/${c.id}')">${I.eye}</button><button class="icon-mini danger" onclick="deleteItem('courses','${c.id}')">${I.trash}</button></td></tr>`).join('')}</tbody></table>`;
+}
+function adminVideoPanel(){
+  return `<div class="card" style="padding:24px; margin-bottom:22px;">
+    <h4 style="font-size:15px; margin-bottom:16px;">Ajouter une vidéo</h4>
+    <div class="admin-form-grid">
+      <div class="form-row"><label>Titre</label><input id="av_title" placeholder="Ex : Le montage sur articulateur"></div>
+      <div class="form-row"><label>Durée (mm:ss)</label><input id="av_duree" placeholder="8:30"></div>
+      <div class="form-row"><label>Classe</label><select id="av_classe">${CLASSES.map(c=>`<option>${c}</option>`).join('')}</select></div>
+      <div class="form-row"><label>Thème</label><input id="av_theme" placeholder="Ex : Occlusion"></div>
+    </div>
+    <div class="form-row"><label>Description</label><textarea id="av_desc" rows="2"></textarea></div>
+    <button class="btn btn-primary" onclick="addVideo()">${I.plus} Ajouter la vidéo</button>
+  </div>
+  <table class="admin-table"><thead><tr><th>Titre</th><th>Classe</th><th>Thème</th><th>Durée</th><th></th></tr></thead>
+  <tbody>${allVideos().map(v=>`<tr><td>${v.title}</td><td>${v.classe}</td><td>${v.theme}</td><td>${v.duree}</td>
+    <td class="row-actions"><button class="icon-mini" onclick="nav('/videos/${v.id}')">${I.eye}</button><button class="icon-mini danger" onclick="deleteItem('videos','${v.id}')">${I.trash}</button></td></tr>`).join('')}</tbody></table>`;
+}
+function adminDocPanel(){
+  return `<div class="card" style="padding:24px; margin-bottom:22px;">
+    <h4 style="font-size:15px; margin-bottom:16px;">Ajouter un document (PDF)</h4>
+    <div class="admin-form-grid">
+      <div class="form-row"><label>Titre</label><input id="ad_title" placeholder="Ex : Fiche — Les résines"></div>
+      <div class="form-row"><label>Type</label><select id="ad_type"><option>Fiche de révision</option><option>Fiche technique</option><option>Fiche de vocabulaire</option><option>Annale</option><option>Sujet d'entraînement</option></select></div>
+      <div class="form-row"><label>Classe</label><select id="ad_classe">${CLASSES.map(c=>`<option>${c}</option>`).join('')}</select></div>
+      <div class="form-row"><label>Matière</label><select id="ad_matiere">${MATIERES.map(m=>`<option>${m}</option>`).join('')}</select></div>
+    </div>
+    <div class="form-row"><label>Description</label><textarea id="ad_desc" rows="2"></textarea></div>
+    <button class="btn btn-primary" onclick="addDoc()">${I.plus} Ajouter le document</button>
+  </div>
+  <table class="admin-table"><thead><tr><th>Titre</th><th>Classe</th><th>Type</th><th></th></tr></thead>
+  <tbody>${allDocuments().map(d=>`<tr><td>${d.title}</td><td>${d.classe}</td><td>${d.type}</td>
+    <td class="row-actions"><button class="icon-mini" onclick="nav('/documents')">${I.eye}</button><button class="icon-mini danger" onclick="deleteItem('documents','${d.id}')">${I.trash}</button></td></tr>`).join('')}</tbody></table>`;
+}
+function adminQuizPanel(){
+  return `<div class="card" style="padding:24px; margin-bottom:22px;">
+    <h4 style="font-size:15px; margin-bottom:16px;">Créer un quiz</h4>
+    <div class="admin-form-grid">
+      <div class="form-row"><label>Titre du quiz</label><input id="aq_title" placeholder="Ex : Quiz Matériaux — Résines"></div>
+      <div class="form-row"><label>Chapitre</label><input id="aq_chap" placeholder="Ex : Les résines composites"></div>
+      <div class="form-row"><label>Classe</label><select id="aq_classe">${CLASSES.map(c=>`<option>${c}</option>`).join('')}</select></div>
+      <div class="form-row"><label>Matière</label><select id="aq_matiere">${MATIERES.map(m=>`<option>${m}</option>`).join('')}</select></div>
+      <div class="form-row"><label>Difficulté</label><select id="aq_diff"><option>Facile</option><option>Intermédiaire</option><option>Avancé</option></select></div>
+      <div class="form-row"><label>Durée estimée (min)</label><input id="aq_duree" type="number" value="5"></div>
+    </div>
+    <p style="font-size:12.5px; color:var(--gray-500); margin:4px 0 10px;">Une question QCM d'exemple sera générée ; vous pourrez l'enrichir ensuite.</p>
+    <div class="form-row"><label>Question</label><input id="aq_q" placeholder="Ex : Quel matériau..."></div>
+    <div class="admin-form-grid">
+      <div class="form-row"><label>Réponse correcte</label><input id="aq_correct" placeholder="Bonne réponse"></div>
+      <div class="form-row"><label>Réponse incorrecte</label><input id="aq_wrong" placeholder="Mauvaise réponse"></div>
+    </div>
+    <button class="btn btn-primary" onclick="addQuiz()">${I.plus} Créer le quiz</button>
+  </div>
+  <table class="admin-table"><thead><tr><th>Titre</th><th>Classe</th><th>Matière</th><th>Questions</th><th></th></tr></thead>
+  <tbody>${allQuizzes().map(q=>`<tr><td>${q.title}</td><td>${q.classe}</td><td>${q.matiere}</td><td>${q.questions.length}</td>
+    <td class="row-actions"><button class="icon-mini" onclick="nav('/quiz/${q.id}')">${I.eye}</button><button class="icon-mini danger" onclick="deleteItem('quizzes','${q.id}')">${I.trash}</button></td></tr>`).join('')}</tbody></table>`;
+}
+function adminExercisePanel(){
+  return `<div class="card" style="padding:24px; margin-bottom:22px;">
+    <h4 style="font-size:15px; margin-bottom:16px;">Créer un exercice QCM</h4>
+    <div class="admin-form-grid">
+      <div class="form-row"><label>Titre</label><input id="ae_title" placeholder="Ex : QCM — Les résines"></div>
+      <div class="form-row"><label>Classe</label><select id="ae_classe">${CLASSES.map(c=>`<option>${c}</option>`).join('')}</select></div>
+      <div class="form-row"><label>Matière</label><select id="ae_matiere">${MATIERES.map(m=>`<option>${m}</option>`).join('')}</select></div>
+    </div>
+    <div class="form-row"><label>Question</label><input id="ae_q" placeholder="Ex : Quelle est la propriété..."></div>
+    <div class="admin-form-grid">
+      <div class="form-row"><label>Réponse correcte</label><input id="ae_correct" placeholder="Bonne réponse"></div>
+      <div class="form-row"><label>Réponse incorrecte</label><input id="ae_wrong" placeholder="Mauvaise réponse"></div>
+    </div>
+    <button class="btn btn-primary" onclick="addExercise()">${I.plus} Créer l'exercice</button>
+  </div>
+  <table class="admin-table"><thead><tr><th>Titre</th><th>Classe</th><th>Type</th><th></th></tr></thead>
+  <tbody>${allExercises().map(e=>`<tr><td>${e.title}</td><td>${e.classe}</td><td>${e.type}</td>
+    <td class="row-actions"><button class="icon-mini" onclick="nav('/exercices/${e.id}')">${I.eye}</button><button class="icon-mini danger" onclick="deleteItem('exercises','${e.id}')">${I.trash}</button></td></tr>`).join('')}</tbody></table>`;
+}
+function requireAdmin(){
+  if(!FIREBASE_OK || !IDENTITY.isAdmin){ toast('Action réservée aux administrateurs'); return false; }
+  return true;
+}
+function addContent(collection, data, successMsg){
+  if(!requireAdmin()) return;
+  fbDB.collection(collection).add(data)
+    .then(()=>toast(successMsg))
+    .catch(e=>{ console.error(e); toast('Écriture refusée — vérifie tes droits administrateur'); });
+}
+function addCourse(){
+  const title = val('ac_title'); if(!title){toast('Merci de renseigner un titre');return;}
+  addContent('courses', {classe:val('ac_classe'), matiere:val('ac_matiere'), chapitre:val('ac_chap')||'Chapitre', title, difficulty:val('ac_diff'), duree:Number(val('ac_duree'))||20, desc:val('ac_desc')||'Nouveau cours.', body:[{h:title},{p:val('ac_body')||'Contenu du cours à compléter.'}]}, 'Cours ajouté');
+}
+function addVideo(){
+  const title = val('av_title'); if(!title){toast('Merci de renseigner un titre');return;}
+  addContent('videos', {classe:val('av_classe'), theme:val('av_theme')||'Général', duree:val('av_duree')||'5:00', title, desc:val('av_desc')||'Nouvelle vidéo.', resume:val('av_desc')||'Résumé à compléter.', points:['Point clé à compléter'], vocab:['Vocabulaire à compléter']}, 'Vidéo ajoutée');
+}
+function addDoc(){
+  const title = val('ad_title'); if(!title){toast('Merci de renseigner un titre');return;}
+  addContent('documents', {classe:val('ad_classe'), matiere:val('ad_matiere'), type:val('ad_type'), taille:'1.0 Mo', title, desc:val('ad_desc')||'Nouveau document.'}, 'Document ajouté');
+}
+function addQuiz(){
+  const title = val('aq_title'); if(!title){toast('Merci de renseigner un titre');return;}
+  const q = val('aq_q')||'Question à compléter'; const correct = val('aq_correct')||'Bonne réponse'; const wrong = val('aq_wrong')||'Mauvaise réponse';
+  addContent('quizzes', {classe:val('aq_classe'), matiere:val('aq_matiere'), chapitre:val('aq_chap')||'Chapitre', difficulty:val('aq_diff'), duree:Number(val('aq_duree'))||5, title, questions:[{q, options:[correct,wrong], correct:0, explain:'Explication à compléter.'}]}, 'Quiz créé');
+}
+function addExercise(){
+  const title = val('ae_title'); if(!title){toast('Merci de renseigner un titre');return;}
+  const q = val('ae_q')||'Question à compléter'; const correct = val('ae_correct')||'Bonne réponse'; const wrong = val('ae_wrong')||'Mauvaise réponse';
+  addContent('exercises', {classe:val('ae_classe'), matiere:val('ae_matiere'), title, type:'qcm', questions:[{q, options:[correct,wrong], correct:0, explain:'Explication à compléter.'}]}, 'Exercice créé');
+}
+function val(id){ const el=document.getElementById(id); return el?el.value.trim():''; }
+function deleteItem(store, id){
+  if(!requireAdmin()) return;
+  fbDB.collection(store).doc(id).delete()
+    .then(()=>toast('Élément supprimé'))
+    .catch(e=>{ console.error(e); toast('Suppression refusée — vérifie tes droits administrateur'); });
+}
+
+/* ============================================================
+   MAIN RENDER
+   ============================================================ */
+function render(){
+  const {path, parts, q} = currentRoute();
+  let top = '/'+(parts[0]||'');
+  if(top==='/') top='/';
+  let body = '';
+  if(parts.length===0){ body = viewHome(); top='/'; }
+  else if(parts[0]==='cours' && parts.length===1){ body = viewCoursList(q); top='/cours'; }
+  else if(parts[0]==='cours' && parts.length===2){ body = viewCourseDetail(parts[1]); top='/cours'; }
+  else if(parts[0]==='videos' && parts.length===1){ body = viewVideoList(q); top='/videos'; }
+  else if(parts[0]==='videos' && parts.length===2){ body = viewVideoDetail(parts[1]); top='/videos'; }
+  else if(parts[0]==='documents'){ body = viewDocuments(q); top='/documents'; }
+  else if(parts[0]==='exercices' && parts.length===1){ body = viewExercisesList(q); top='/exercices'; }
+  else if(parts[0]==='exercices' && parts.length===2){ body = viewExerciseRunner(parts[1]); top='/exercices'; }
+  else if(parts[0]==='quiz' && parts.length===1){ body = viewQuizList(q); top='/quiz'; }
+  else if(parts[0]==='quiz' && parts.length===2){ body = viewQuizDetail(parts[1]); top='/quiz'; }
+  else if(parts[0]==='quiz' && parts.length===3 && parts[2]==='run'){ body = viewQuizRun(parts[1]); top='/quiz'; }
+  else if(parts[0]==='progression'){ body = viewProgression(); top='/progression'; }
+  else if(parts[0]==='profil'){ body = viewProfil(); top='/profil'; }
+  else if(parts[0]==='favoris'){ body = viewFavoris(); top='/favoris'; }
+  else if(parts[0]==='admin'){ body = viewAdmin(); top='/admin'; }
+  else { body = `<section class="section">${emptyState('Page introuvable.')}<div style="text-align:center;"><button class="btn btn-primary" onclick="nav(\'/\')">Retour à l\'accueil</button></div></section>`; }
+
+  document.getElementById('app').innerHTML = chrome(top, body);
+  window.scrollTo({top:0, behavior:'instant' in window ? 'instant':'auto'});
+}
+</script>
+</body>
+</html>
